@@ -7,7 +7,7 @@ const app = express();
 require("dotenv").config();
 
 // Set the port for the server to listen on, using the environment variable or a default value
-const PORT = process.env.PORT || 8070;
+const PORT = process.env.PORT || 4011;
 
 app.use(cors());
 app.use(bodyParser.json());
