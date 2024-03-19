@@ -28,9 +28,15 @@ connection.once("open", () => {
   console.log("MongoDB Connection success!");
 });
 
+
 //Garbage Request Router
 const garbageRequestrRouter = require("./routes/binguni/GarbageRequest");
 app.use("garbageRequest", garbageRequestrRouter)
+
+// lakmal
+const societyRouter = require("./routes/society.js");
+app.use("/society",societyRouter)
+
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on the port number: ${PORT}`);
