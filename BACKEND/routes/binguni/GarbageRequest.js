@@ -1,5 +1,6 @@
 const router = require("express").Router();
-let GarbageRequest = require("../models/binguni/GarbageRequest");
+let GarbageRequest = require("../../models/binguni/GarbageRequest.js");
+
 
 //create operation
 router.route("/addgarbageRequest").post((req,res) =>{
