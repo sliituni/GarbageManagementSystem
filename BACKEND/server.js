@@ -32,6 +32,9 @@ connection.once("open", () => {
 const societyRouter = require("./routes/society.js");
 app.use("/society",societyRouter)
 
+const userRouter = require("./routes/user.js");
+app.use("/user", userRouter);
+
 app.listen(PORT, () => {
     console.log(`Server is up and running on the port number: ${PORT}`);
   });
