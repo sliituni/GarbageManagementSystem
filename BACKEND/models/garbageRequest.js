@@ -39,6 +39,6 @@ const garbageRequestSchema = new Schema({
     }
 })
 // Create a model named "garbageRequest" based on the defined schema
-const society = mongoose.model("GarbageRequest", garbageRequestSchema);
+const garbageRequest = mongoose.model("GarbageRequest", garbageRequestSchema);
 
 module.exports = garbageRequest;
