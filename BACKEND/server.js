@@ -29,11 +29,7 @@ connection.once("open", () => {
 });
 
 
-/*Garbage Request Router
-const garbageRequestrRouter = require("./routes/binguni/GarbageRequest");
-app.use("garbageRequest", garbageRequestrRouter)*/
-
-// lakmal
+//Garbage Request Router
 const garbageRequestRouter = require("./routes/garbageRequest.js");
 app.use("/garbageRequest",garbageRequestRouter)
 
