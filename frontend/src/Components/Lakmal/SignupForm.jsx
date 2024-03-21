@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import axios from 'axios';
 
 import login from './img/login.png';
@@ -13,6 +13,7 @@ const SignupForm = () => {
     password: ''
   });
 
+  const navigate = useNavigate();
   const { fullname, email, contactno, address, password } = formData;
 
   const onChange = e => {
@@ -24,6 +25,7 @@ const SignupForm = () => {
     try {
       const res = await axios.post('http://localhost:4011/user/signup', formData); 
       console.log(res.data); 
+      navigate('/');
       // Reset form after successful submission
       setFormData({
         fullname: '',
