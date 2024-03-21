@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,13 +16,13 @@ export const Header = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <b><a className="nav-link active" aria-current="page" href="#">Home</a></b>
+                <b><a className="nav-link active" aria-current="page" href="#about">Home</a></b>
               </li><span style={{ marginRight: "50px" }}></span>
               <li className="nav-item">
-                <b><a className="nav-link active" aria-current="page" href="#">Schedule</a></b>
+                <b><a className="nav-link active" aria-current="page" href="#gscheadule">Schedule</a></b>
               </li><span style={{ marginRight: "50px" }}></span>
               <li className="nav-item">
-                <b><a className="nav-link active" aria-current="page" href="#">Map</a></b>
+                <b><a className="nav-link active" aria-current="page" href="#map">Map</a></b>
               </li><span style={{ marginRight: "50px" }}></span>
               <li className="nav-item">
                 <b><a className="nav-link active" aria-current="page" href="#">Give Away</a></b>
@@ -36,7 +37,9 @@ export const Header = () => {
           </div>
         </center>
         <div>
-          <a href='#' type="button" className="btn btn-success rounded-pill"><b>Sign out</b></a>
+          <Link to={"/"} type="button" className="btn btn-success rounded-pill">
+            <b>Sign out</b>
+          </Link>
           <span style={{ marginRight: "10px" }}></span>
           <a href='#' type="button" className="btn btn-success rounded-pill">
             <FontAwesomeIcon icon={faUser} />
