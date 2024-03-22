@@ -7,7 +7,7 @@ const app = express();
 require("dotenv").config();
 
 // Set the port for the server to listen on, using the environment variable or a default value
-const PORT = process.env.PORT || 8070;
+const PORT = process.env.PORT || 4011;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -33,6 +33,9 @@ connection.once("open", () => {
 const garbageRequestRouter = require("./routes/garbageRequest.js");
 app.use("/garbageRequest",garbageRequestRouter)
 
+
+const userRouter = require("./routes/user.js");
+app.use("/user", userRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on the port number: ${PORT}`);
