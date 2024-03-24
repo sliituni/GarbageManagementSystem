@@ -13,32 +13,34 @@ export default function AddGarbageReq() {
     const [garbageType, setgarbageType] = useState("");
     const [reason, setreason] = useState("");
     const [quantity, setquantity] = useState("");
-   
+    const [nicError, setNicError] = useState("");
+    const [contactNoError, setContactNoError] = useState(""); // Define state variables for errors
+
     // Validation functions
     const validatenic = () => {
         if (!nic.match(/^\d{9}[vVxX]|\d{12}$/)) {
-            setnicError("Invalid NIC format (e.g., 123456789V or 123456789000)");
+            setNicError("Invalid NIC format (e.g., 123456789V or 123456789000)"); // Use setNicError to update error state
         } else {
-            setnicError("");
+            setNicError("");
         }
     };
 
     const validateContactNo = () => {
         if (!contactNo.match(/^\d{10}$/)) {
-            setContactNoError("Invalid Contact No format (e.g., 1234567890)");
+            setContactNoError("Invalid Contact No format (e.g., 1234567890)"); // Use setContactNoError to update error state
         } else {
             setContactNoError("");
         }
     };
 
     function sendData(e) {
-        e.preventDefault();
+        
 
         validatenic();
         validateContactNo();
 
         if (!nicError && !contactNoError) {
-            const newPaddymill = {
+            const newGarbageReq = {
                 name,
                 companyName,
                 address,
@@ -95,7 +97,7 @@ export default function AddGarbageReq() {
                     <input type="text" className="form-control" id="reason" placeholder="Enter Reason" onChange={(e) => { setreason(e.target.value); }} required />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Owner Name</label>
+                    <label className="form-label">Quantity</label>
                     <input type="text" className="form-control" id="quantity" placeholder="Enter Quantity" onChange={(e) => { setquantity(e.target.value); }} required />
                 </div>
                 
@@ -105,4 +107,3 @@ export default function AddGarbageReq() {
         </div>
     )
 }
-
