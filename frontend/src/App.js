@@ -20,7 +20,7 @@ function App() {
         <Route path='/index' element={<Index/>} />
         <Route path='/home' element={<Home/>}/>
         <Route path='/addGarbageRequest' element={<AddGarbageReq/>}/>
-        <Route path='GoogleMapContainer' element={<GoogleMapContainer/>}/>
+        <Route path='/GoogleMapContainer' element={<GoogleMapContainer/>}/>
       </Routes> 
     </Router>
   );
