@@ -66,7 +66,7 @@ export default function index() {
       </div>
       </div>
       <br/><br/><br/><br/><br/><br/>
-      <Map />
+      <GoogleMapContainer />
     </div>
   )
 }
