@@ -2,6 +2,7 @@ import React from 'react'
 import { Header } from '../Header'
 import Home from './Home';
 import Schedule from '../Binguni/Schedule';
+import GoogleMapContainer from '../Binguni/GoogleMapContainer';
 import vector3 from './img/vector3.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGift, faRecycle, faChartLine } from '@fortawesome/free-solid-svg-icons';
@@ -63,9 +64,8 @@ export default function index() {
           </div>
         </div>
       </div>
-      </div>
-      <br/><br/><br/><br/><br/><br/>
-      
+      </div><br/><br/><br/><br/><br/><br/>
+      <GoogleMapContainer/>
     </div>
   )
 }

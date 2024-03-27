@@ -18,9 +18,10 @@ const CustomGoogleMap = () => {
         zoom={10}
         center={center}
         mapContainerStyle={{
-          minHeight: "25rem",
+          minHeight: "800px",
           minWidth: "23rem",
-          maxWidth: "39rem"
+          maxWidth: "100%",
+          borderRadius: "20px"
         }}
       >
         <Marker position={marker} />
