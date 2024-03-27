@@ -7,7 +7,7 @@ const libraries = ['places'];
 const GoogleMapContainer = () => {
   return (
     <div id='map'>
-      <LoadScript googleMapsApiKey='YOUR_API_KEY_HERE' libraries={libraries}>
+      <LoadScript googleMapsApiKey='AIzaSyArw3XGRpnfAidEd760CGEXW7vKD-XjyyA' libraries={libraries}>
         <CustomeGoogleMap />
       </LoadScript>
     </div>
