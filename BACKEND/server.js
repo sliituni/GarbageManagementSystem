@@ -28,9 +28,11 @@ connection.once("open", () => {
   console.log("MongoDB Connection success!");
 });
 
-// lakmal
-const societyRouter = require("./routes/society.js");
-app.use("/society",societyRouter)
+
+//Garbage Request Router
+const garbageRequestRouter = require("./routes/garbageRequest.js");
+app.use("/garbageRequest",garbageRequestRouter)
+
 
 const userRouter = require("./routes/user.js");
 app.use("/user", userRouter);

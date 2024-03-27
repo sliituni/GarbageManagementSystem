@@ -6,6 +6,8 @@ import LoginForm from './Components/Lakmal/LoginForm';
 import SignupForm from './Components/Lakmal/SignupForm';
 import Index from './Components/Lakmal/Index';
 import Home from './Components/Lakmal/Home';
+import AddGarbageReq from './Components/Binguni/AddGarbageReq';
+import GoogleMapContainer from './Components/Binguni/GoogleMapContainer';
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
         <Route path='/signup' element={<SignupForm/>} />
         <Route path='/index' element={<Index/>} />
         <Route path='/home' element={<Home/>}/>
+        <Route path='/addGarbageRequest' element={<AddGarbageReq/>}/>
+        <Route path='/GoogleMapContainer' element={<GoogleMapContainer/>}/>
       </Routes> 
     </Router>
   );
