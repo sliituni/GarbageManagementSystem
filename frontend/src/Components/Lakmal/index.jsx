@@ -13,7 +13,7 @@ export default function index() {
       <Header />
       <Home />
       <Schedule />
-      <div style={{marginTop:'100px'}}>
+      <div style={{ marginTop: '100px' }}>
         <div>
             <div style={{ width: '100%', height: '100%', position: 'relative' }}>
               <div style={{ width: 810, height: 609, left: 0, top: 71, position: 'absolute', background: 'rgba(153, 255, 165.39, 0.71)', borderBottomRightRadius: 304.50, borderTopRightRadius: 304.50 }} />
@@ -64,8 +64,9 @@ export default function index() {
           </div>
         </div>
       </div>
-      </div><br/><br/><br/><br/><br/><br/>
-      <GoogleMapContainer/>
+      </div>
+      <br/><br/><br/><br/><br/><br/>
+      <GoogleMapContainer />
     </div>
   )
 }
