@@ -18,8 +18,12 @@ const communityswapSchema = new Schema({
     address:{
         type: String,
         required: true,
+    },
+    image: {
+        data: Buffer, 
+        contentType: String
     }
-})
+});
 
 const Communityswap = mongoose.model("Swapitem", communityswapSchema);
 
