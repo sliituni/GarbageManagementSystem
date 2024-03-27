@@ -33,7 +33,7 @@ export default function Home() {
             <img src={vector2} alt='vector2' />
           </div>
           <div className='col-sm-6'>
-            <h3 style={{color:'#34A853', fontWeight:'bold'}}>I{" "}N{" "}S{" "}T{" "}R{" "}U{" "}C{" "}T{" "}I{" "}O{" "}N{" "}S</h3>
+            <h3 style={{color:'#34A853', fontWeight:'bold', letterSpacing: '6px'}}>INSTRUCTIONS</h3>
             <br/><h4>
             <ul>
                 <li>Instruction 1</li><br/>
