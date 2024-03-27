@@ -28,7 +28,7 @@ const LoginForm = () => {
         password: ''
       });
       // Redirect to index.js page after successful login
-      navigate('/index');
+      navigate('/Landing');
     } catch (err) {
       if (err.response.status === 400) {
         alert("Email or password incorrect !")
