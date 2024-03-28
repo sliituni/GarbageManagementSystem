@@ -57,22 +57,21 @@ export default function AddGarbageReq() {
 
             }).catch(() => {
                 alert("Error")
-            })
-        }
+        })
     }
+}
 
-    return (
-        <div>
+return (
+        <div style={{marginTop:'100px'}}>
             <form className="container" onSubmit={sendData}>
-                <br />
                 <h2>Add Garbage Request</h2><br />
                 <div className="mb-3">
                     <label className="form-label">Owner Name</label>
                     <input type="text" className="form-control" id="name" placeholder="Enter Owner Name" onChange={(e) => { setname(e.target.value); }} required />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Company Name</label>
-                    <input type="text" className="form-control" id="companyName" placeholder="Enter Company Name" onChange={(e) => { setcompanyName(e.target.value); }} required />
+                    <label className="form-label">Company Name {'('}optional{')'}</label>
+                    <input type="text" className="form-control" id="companyName" placeholder="Enter Company Name" onChange={(e) => { setcompanyName(e.target.value); }} />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Address</label>
@@ -100,9 +99,9 @@ export default function AddGarbageReq() {
                     <label className="form-label">Quantity</label>
                     <input type="text" className="form-control" id="quantity" placeholder="Enter Quantity" onChange={(e) => { setquantity(e.target.value); }} required />
                 </div>
-                
-                
-                <button type="submit" className="btn btn-outline-success">Submit</button>
+                <br/>
+                <h6>Collect within 3 days from the requested date *</h6>
+                <button type="submit" className="btn btn-success rounded-pill" style={{ width: '300px' }}><b>Submit</b></button>
             </form>
         </div>
     )

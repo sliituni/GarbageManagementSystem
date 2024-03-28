@@ -76,15 +76,19 @@ router.route("deleteUser/:uId").delete(async(req, res)=>{
   })
 });
 
-//Display (one)
-router.route("getUser/:uID").get(async(req, res)=>{
-  let userId = req.params.uID;
-  const user = await User.findById(userId).then((user)=>{
-    res.status(200).send({status: "User Fetched", user})
-  }).catch(()=>{
-    console.log(err.message);
-    res.status(500).send({status: "Error with get User details",error: err.message})
-  })
+// Display (one)
+router.get("/getUser/:uId", async (req, res) => {
+  try {
+    const userId = req.params.uId;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ status: "User not found" });
+    }
+    res.status(200).json({ status: "User Fetched", user });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ status: "Error with get User details", error: err.message });
+  }
 });
 
 module.exports = router;
