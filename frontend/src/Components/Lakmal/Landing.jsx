@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Header } from '../Header'
 import Home from './Home'
 import Schedule from '../Binguni/Schedule';
@@ -29,7 +30,7 @@ export default function Landing() {
       <div className='container' style={{ marginLeft:'50%',paddingTop:'175px'}}>
         <div className='row'>
           <div className='col-sm-6'>
-            <div className='btn' style={{ width: '100%', height: '25%', padding: 20, background: '#F0F0F0', borderRadius: 20, justifyContent: 'flex-start', alignItems: 'center', gap: 45, display: 'inline-flex' }}>
+            <div className='btn' style={{ width: '100%', height: '25%', padding: 20, background: '#1111', borderRadius: 20, justifyContent: 'flex-start', alignItems: 'center', gap: 45, display: 'inline-flex' }}>
               <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
                 <div style={{ alignSelf: 'stretch', padding: 20, background: '#FBBC05', borderRadius: 15, overflow: 'hidden', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 10, display: 'inline-flex' }}>
                   <h3><FontAwesomeIcon icon={faGift} /></h3>
@@ -40,8 +41,8 @@ export default function Landing() {
               </div>
             </div>
             <br /><br />
-            <div className='btn' style={{ width: '100%', height: '25%', padding: 20, background: '#F0F0F0', borderRadius: 20, justifyContent: 'flex-start', alignItems: 'center', gap: 45, display: 'inline-flex' }}>
-              <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
+            <Link to={'/addGarbageRequest'} className='btn' style={{ width: '100%', height: '25%', padding: 20, background: '#11111', borderRadius: 20, justifyContent: 'flex-start', alignItems: 'center', gap: 45, display: 'inline-flex' }}>
+            <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
                 <div style={{ alignSelf: 'stretch', padding: 20, background: '#34A853', borderRadius: 15, overflow: 'hidden', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 10, display: 'inline-flex' }}>
                   <h3><FontAwesomeIcon icon={faRecycle} /></h3>
                 </div>
@@ -49,9 +50,9 @@ export default function Landing() {
               <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
                 <div style={{ color: 'black', fontSize: 20, fontFamily: 'Inter', fontWeight: '700', wordWrap: 'break-word', paddingLeft: '100px' }}>Order Recycle Items</div>
               </div>
-            </div>
+            </Link>
             <br /><br />
-            <div className='btn' style={{ width: '100%', height: '25%', padding: 20, background: '#F0F0F0', borderRadius: 20, justifyContent: 'flex-start', alignItems: 'center', gap: 45, display: 'inline-flex' }}>
+            <div className='btn' style={{ width: '100%', height: '25%', padding: 20, background: '#1111', borderRadius: 20, justifyContent: 'flex-start', alignItems: 'center', gap: 45, display: 'inline-flex' }}>
               <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
                 <div style={{ alignSelf: 'stretch', padding: 20, background: '#1CB9E1', borderRadius: 15, overflow: 'hidden', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 10, display: 'inline-flex' }}>
                   <h3><FontAwesomeIcon icon={faChartLine} /></h3>

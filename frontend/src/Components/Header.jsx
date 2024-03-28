@@ -7,7 +7,7 @@ import logo from './img/greenbinlogo.png';
 
 export const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body">
+    <nav className="navbar navbar-expand-lg">
       <div className="container container-fluid">
         <a className="navbar-brand" href="#">
           <img src={logo} alt="Logo" width="100" height="100" />
