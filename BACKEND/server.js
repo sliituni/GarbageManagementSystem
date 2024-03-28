@@ -7,7 +7,7 @@ const app = express();
 require("dotenv").config();
 
 // Set the port for the server to listen on, using the environment variable or a default value
-const PORT = process.env.PORT || 8070;
+const PORT = process.env.PORT || 4011;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -32,11 +32,6 @@ connection.once("open", () => {
 const societyRouter = require("./routes/society.js");
 app.use("/society",societyRouter)
 
-//kavindu
-const communityswapRouter = require("./routes/Communityswap.js");
-app.use("/cs", communityswapRouter);
-
 app.listen(PORT, () => {
     console.log(`Server is up and running on the port number: ${PORT}`);
   });
-  
