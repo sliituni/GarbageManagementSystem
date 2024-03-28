@@ -110,9 +110,9 @@ const SignupForm = () => {
       <img src={login} alt='login' width="700" height="500" style={{paddingLeft:"200px"}}/>
     </div>
       </div>
+      <br/><br/><br/><br/><br/><br/><br/>
     </div>
   );
 };
 
 export default SignupForm;
-  
