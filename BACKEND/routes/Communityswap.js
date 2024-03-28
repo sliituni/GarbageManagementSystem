@@ -44,7 +44,8 @@ router.route("/add").post(upload.single('image'), async (req, res) => {
         });
 
         await newSwap.save();
-        res.json("Item added");
+        // res.json("Item added");
+        res.json({ status: "Item added", imageUrl });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error adding item" });
@@ -123,6 +124,20 @@ router.route("/get/:id").get(async (req, res) => {
     try {
         const item = await Communityswap.findById(itemId);
         res.status(200).send({ status: "Item fetched", item });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error fetching item" });
+    }
+});
+router.get("/getByImageUrl/:imageUrl", async (req, res) => {
+    const imageUrl = req.params.imageUrl;
+
+    try {
+        const item = await Communityswap.findOne({ imageUrl: imageUrl });
+        if (!item) {
+            return res.status(404).json({ error: "Item not found" });
+        }
+        res.status(200).json({ status: "Item fetched", item });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error fetching item" });

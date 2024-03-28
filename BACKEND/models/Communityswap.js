@@ -22,7 +22,12 @@ const communityswapSchema = new Schema({
     image: {
         data: Buffer, 
         contentType: String
+    },
+    imageUrl: { 
+        type: String, 
+        required: true,
     }
+   
 });
 
 const Communityswap = mongoose.model("Swapitem", communityswapSchema);
