@@ -7,7 +7,7 @@ export default function Schedule() {
       <table className="table table-bordered">
         <tbody >
         <tr>
-          <td style={{width: '120px'}}></td>
+          <td style={{width: '120px', backgroundColor: '#e7f0f6'}}></td>
           <td style={{width: '80px', backgroundColor: '#000080', color: 'white',  fontSize: '18px', textAlign: 'center'}}>A</td>
           <td style={{width: '80px', backgroundColor: '#8B008B', color: 'white',  fontSize: '18px', textAlign: 'center'}}>B</td>
           <td style={{width: '80px', backgroundColor: '#B8860B', color: 'white',  fontSize: '18px', textAlign: 'center'}}>C</td>
