@@ -9,6 +9,7 @@ import UserProfile from './Components/Lakmal/UserProfile';
 import AddGarbageReq from './Components/Binguni/AddGarbageReq';
 import GoogleMapContainer from './Components/Binguni/GoogleMapContainer';
 import Landing from './Components/Lakmal/Landing';
+import AllGarbageRequests from './Components/Binguni/AllGarbageRequests';
 
 import AddCSItem from './Components/Kavindu/AddCSItem';
 import DisplayCS from './Components/Kavindu/DisplayCS';
@@ -30,6 +31,7 @@ function App() {
         <Route path='/profile' element={<UserProfile/>} />
         <Route path='/addGarbageRequest' element={<AddGarbageReq/>}/>
         <Route path='/GoogleMapContainer' element={<GoogleMapContainer/>}/>
+        <Route path='/gbReq' element={<AllGarbageRequests/>}/>
 
         {/* kavindu */}
         <Route path="cs/main/addItems" element={<AddCSItem />} />
