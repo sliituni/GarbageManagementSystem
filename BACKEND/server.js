@@ -37,6 +37,9 @@ app.use("/garbageRequest",garbageRequestRouter)
 const userRouter = require("./routes/user.js");
 app.use("/user", userRouter);
 
+const communityswapRouter = require("./routes/Communityswap.js");
+app.use("/cs", communityswapRouter);
+
 app.listen(PORT, () => {
     console.log(`Server is up and running on the port number: ${PORT}`);
   });
