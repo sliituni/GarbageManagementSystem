@@ -7,7 +7,7 @@ import logo from './img/greenbinlogo.png';
 
 export const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body">
+    <nav className="navbar navbar-expand-lg">
       <div className="container container-fluid">
         <a className="navbar-brand" href="#">
           <img src={logo} alt="Logo" width="100" height="100" />
@@ -41,9 +41,9 @@ export const Header = () => {
             <b>Sign out</b>
           </Link>
           <span style={{ marginRight: "10px" }}></span>
-          <a href='#' type="button" className="btn btn-success rounded-pill">
+          <Link to={"/profile"} type='button' className="btn btn-success rounded-pill">
             <FontAwesomeIcon icon={faUser} />
-          </a>
+          </Link>
         </div>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>

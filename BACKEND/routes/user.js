@@ -44,4 +44,51 @@ router.post('/login', async (req, res) => {
   }
 });
 
+//Update Profile
+router.route("/updateProfile/:uId").put(async(req, res) => {
+  let userId = req.params.uId;
+  const {fullname,email,contactno,address,password} = req.body;
+
+  const updateUser = {
+    fullname,
+    email,
+    contactno,
+    address,
+    password
+  }
+  const update = await User.findByIdAndUpdate(userId, updateUser).then(()=>{
+    res.status(200).send({status: "User Details Updated"})
+  }).catch((err)=>{
+    console.log(err);
+    res.status(500).send({status: "Error with updating data", error: err.message});
+  })
+});
+
+//Delete User account
+router.route("deleteUser/:uId").delete(async(req, res)=>{
+  let userId = req.params.uId;
+
+  await User.findByIdAndDelete(userId).then((user)=>{
+    res.status(200).send({status :"User Deleted"})
+  }).catch((err)=>{
+    console.log(err.message);
+    res.status(500).send({status: "Error with delete user", error: err.message})
+  })
+});
+
+// Display (one)
+router.get("/getUser/:uId", async (req, res) => {
+  try {
+    const userId = req.params.uId;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ status: "User not found" });
+    }
+    res.status(200).json({ status: "User Fetched", user });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ status: "Error with get User details", error: err.message });
+  }
+});
+
 module.exports = router;
