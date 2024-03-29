@@ -7,7 +7,8 @@ export default function AllGarbageRequests() {
 
     useEffect(() => {
         function getGarbageRequests() {
-            axios.get("http:??localhost:4011/garbageRequest/gbReq")
+            axios.get("http://localhost:4011/garbageRequest/GarbafeRequest")
+
             .then((res) => {
                 setGarbageRequests(res.data);
             })
