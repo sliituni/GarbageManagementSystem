@@ -58,7 +58,7 @@ function DisplayCS() {
                         <img
                           src={item.imageUrl}
                           alt={item.itemName}
-                          style={{ maxWidth: "100%", maxHeight: "200px", cursor: "pointer" }}
+                          style={{ maxWidth: "100%", maxHeight: "300px", cursor: "pointer" }}
                           onClick={() => openCSPopup(item._id)}
                         />
                       )}

@@ -9,6 +9,7 @@ function AddCSItem() {
   const [itemName, setItemName] = useState("");
   const [itemCondition, setItemCondition] = useState("");
   const [contactNo, setContactNo] = useState("");
+  const [contactError, setContactError] = useState("");
   const [address, setAddress] = useState("");
 
   const navigate = useNavigate();
@@ -17,6 +18,14 @@ function AddCSItem() {
     const file = e.target.files[0];
     setImage(file);
     setPreviewImage(URL.createObjectURL(file)); // Preview image
+  };
+
+  const validateContactNo = () => {
+    if (!contactNo.match(/^\d{10}$/)) {
+      setContactError("Invalid Contact No format (e.g., 1234567890)");
+    } else {
+      setContactError("");
+    }
   };
 
   const sendData = async (e) => {
@@ -96,8 +105,10 @@ function AddCSItem() {
                     placeholder="Enter contact number"
                     value={contactNo}
                     onChange={(e) => setContactNo(e.target.value)}
+                    onBlur={validateContactNo}
                     required
                   />
+                  {contactError && <span style={{ color: 'red' }}>{contactError}</span>}
                 </div><br/>
                 <div className="form-group">
                   <label htmlFor="address">Address:</label>
