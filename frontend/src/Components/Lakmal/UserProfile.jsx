@@ -1,25 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import user from './img/user.png';
+import UpdatePopup from './UpdatePopup';
 
 const UserProfile = () => {
   const [userDetails, setUserDetails] = useState(null);
+  const [showUpdatePopup, setShowUpdatePopup] = useState(false);
 
   useEffect(() => {
     fetchUserDetails();
-  }, []);
+}, []);
 
-  const fetchUserDetails = async () => {
+const fetchUserDetails = async () => {
     try {
+      
       const userId = localStorage.getItem('userId');
       const response = await axios.get(`http://localhost:4011/user/getUser/${userId}`);
       setUserDetails(response.data.user);
     } catch (error) {
       console.error('Error fetching user details:', error.message);
     }
-  };
+};
 
-  return (
+const openUpdatePopup = () => {
+  setShowUpdatePopup(true);
+};
+
+const closeUpdatePopup = () => {
+  setShowUpdatePopup(false);
+};
+
+return (
     <div className='container' style={{ marginTop: '100px' }}>
       <div className='row'>
         <div className='col-sm-6' style={{ marginLeft: '-100px' }}>
@@ -46,7 +57,7 @@ const UserProfile = () => {
           )}
           <div className='row'>
             <div className='col-sm-6'>
-              <button type='button' className='btn btn-success rounded-pill' style={{ width: '300px' }}>
+              <button type='button' className='btn btn-success rounded-pill' style={{ width: '300px' }} onClick={openUpdatePopup}>
                 <b>Update Details</b>
               </button>
             </div>
@@ -58,6 +69,7 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
+      {showUpdatePopup && <UpdatePopup userDetails={userDetails} onClose={closeUpdatePopup} />}
     </div>
   );
 };

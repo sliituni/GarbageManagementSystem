@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Invalid Credentials' });
     }
 
-    res.json({ success: true, message: 'Login successful' });
+    res.json({ success: true, message: 'Login successful', userDetails:user });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -45,23 +45,23 @@ router.post('/login', async (req, res) => {
 });
 
 //Update Profile
-router.route("/updateProfile/:uId").put(async(req, res) => {
-  let userId = req.params.uId;
-  const {fullname,email,contactno,address,password} = req.body;
+router.put("/updateProfile/:uId", async(req, res) => {
+  try {
+    const userId = req.params.uId;
+    const { fullname, email, contactno, address, password } = req.body;
+    const updateUser = { fullname, email, contactno, address, password };
 
-  const updateUser = {
-    fullname,
-    email,
-    contactno,
-    address,
-    password
+    const updatedUser = await User.findByIdAndUpdate(userId, updateUser, { new: true });
+
+    if (!updatedUser) {
+      return res.status(404).json({ status: "User not found" });
+    }
+
+    res.status(200).json({ status: "User Details Updated", user: updatedUser });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ status: "Error with updating user details", error: err.message });
   }
-  const update = await User.findByIdAndUpdate(userId, updateUser).then(()=>{
-    res.status(200).send({status: "User Details Updated"})
-  }).catch((err)=>{
-    console.log(err);
-    res.status(500).send({status: "Error with updating data", error: err.message});
-  })
 });
 
 //Delete User account

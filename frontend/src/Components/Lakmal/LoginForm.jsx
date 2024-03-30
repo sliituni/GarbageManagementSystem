@@ -23,6 +23,7 @@ const LoginForm = () => {
     try {
       const res = await axios.post('http://localhost:4011/user/login', formData);
       console.log(res.data);
+      localStorage.setItem('userId',res.data.userDetails._id)
       setFormData({
         email: '',
         password: ''
