@@ -10,6 +10,12 @@ import AddGarbageReq from './Components/Binguni/AddGarbageReq';
 import GoogleMapContainer from './Components/Binguni/GoogleMapContainer';
 import Landing from './Components/Lakmal/Landing';
 
+import AddCSItem from './Components/Kavindu/AddCSItem';
+import DisplayCS from './Components/Kavindu/DisplayCS';
+import DisplayCSUserP from './Components/Kavindu/DisplayCSUserP';
+import EditCSItem from './Components/Kavindu/EditCSItem';
+
+
 
 
 function App() {
@@ -25,9 +31,16 @@ function App() {
         <Route path='/addGarbageRequest' element={<AddGarbageReq/>}/>
         <Route path='/GoogleMapContainer' element={<GoogleMapContainer/>}/>
 
+        {/* kavindu */}
+        <Route path="cs/main/addItems" element={<AddCSItem />} />
+        <Route path="cs/main" element={<DisplayCS />} />
+        <Route path="cs/userp" element={<DisplayCSUserP />} />
+        <Route path="cs/userp/edit/:id" element={<EditCSItem />} />
+
       </Routes> 
     </Router>
   );
 }
 
 export default App;
+ 
