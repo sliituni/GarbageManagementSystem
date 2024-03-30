@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DisplayCSPopup from "./DisplayCSPopup";
 import { useNavigate } from "react-router-dom";
+import { Header } from "../Header";
 
 function DisplayCS() {
 
@@ -29,10 +30,11 @@ function DisplayCS() {
   }, []);
 
   return (
-    <div className="container">
+    <div>
+    <Header/>
+    <div className="container" style={{marginTop:'50px'}}>
       <div className="row justify-content-center">
         <div className="col-md-10">
-          <h2 className="py-4">Community Swap</h2>
           <div className="d-flex justify-content-between align-items-center">
             {/* <div>
               <p style={{ color: 'green' }}>&nbsp;&nbsp;Option for</p>
@@ -40,11 +42,11 @@ function DisplayCS() {
               <p style={{ color: 'green' }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Over Disposal</p>
             </div> */}
             <div style={{ padding: '10px', marginBottom: '10px' }}>
-              <p style={{ color: 'orange', fontSize: '24px', fontWeight: 'bold', marginBottom: '5px', cursor: 'pointer' }}>&nbsp;&nbsp;Option for Reuse Over Disposal</p>
+              <p style={{ color: '#34A853', fontSize: '24px', fontWeight: 'bold', marginBottom: '5px', cursor: 'pointer', letterSpacing: '5px' }}>OPTION FOR REUSE OVER DISPOSAL</p>
             </div>
 
-            <button className="btn btn-success">
-              <span class="badge bg-secondary" onClick={() => navigate('addItems')}>+ Add Items</span>
+            <button className="btn rounded-pill" style={{ width: '200px', background:'#34A853', color:'white' }}>
+              <span onClick={() => navigate('addItems')}><b>Add Items</b></span>
             </button>
           </div>
           <div className="card" style={{ padding: '20px' }}>
@@ -74,6 +76,7 @@ function DisplayCS() {
       {CSPopupOpen && (
         <DisplayCSPopup onClose={() => setCSPopupOpen(false)} itemId={selectedItemId} />
       )}
+    </div>
     </div>
   );
 }

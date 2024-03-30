@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function Schedule() {
   return (
-    <div id="gschedule" className="container">
-      <div className="mb-3" style={{ fontSize: '30px', fontWeight: 'bold', color: 'green'}}>Garbage Collection Schedule</div>
+    <div id="gscheadule" className="container" style={{marginTop:'100px'}}>
+      <div className="mb-3" style={{ color:'#34A853', fontWeight:'bold', letterSpacing: '6px'}}><h3><b>GARBAGE COLLECTION SCHEDULE</b></h3></div><br/>
       <table className="table table-bordered">
         <tbody >
         <tr>
