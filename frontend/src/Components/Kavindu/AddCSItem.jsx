@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 // import { Image } from 'cloudinary-react';
 import { useNavigate } from 'react-router-dom';
+import { Header } from "../Header";
+import { Footer } from "../Footer";
 
 function AddCSItem() {
   const [image, setImage] = useState(null);
@@ -64,7 +66,9 @@ function AddCSItem() {
   };
 
   return (
-    <div className="container">
+    <div>
+    <Header/>
+    <div className="container" style={{paddingTop:'150px', paddingBottom: '50px'}}>
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div className="card">
@@ -141,8 +145,8 @@ function AddCSItem() {
                       style={{ maxWidth: "300px", maxHeight: "300px" }}
                     />
                   </div>
-                )}<br/>
-                <button type="submit" className="btn btn-primary">
+                )}
+                <button type="submit" className="btn rounded-pill" style={{ background:'#34A853', color:'white', width: '150px' }}>
                   Submit
                 </button>
               </form>
@@ -150,6 +154,8 @@ function AddCSItem() {
           </div>
         </div>
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 }

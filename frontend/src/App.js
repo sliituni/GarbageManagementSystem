@@ -9,20 +9,18 @@ import UserProfile from './Components/Lakmal/UserProfile';
 import AddGarbageReq from './Components/Binguni/AddGarbageReq';
 import GoogleMapContainer from './Components/Binguni/GoogleMapContainer';
 import Landing from './Components/Lakmal/Landing';
-
 import AddCSItem from './Components/Kavindu/AddCSItem';
 import DisplayCS from './Components/Kavindu/DisplayCS';
 import DisplayCSUserP from './Components/Kavindu/DisplayCSUserP';
 import EditCSItem from './Components/Kavindu/EditCSItem';
-
-
-
+import { PHeader } from './Components/PHeader';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path='/header' element={<Header/>} />
+        <Route path='/pheader' element={<PHeader/>} />
         <Route path='/' element={<LoginForm/>} />
         <Route path='/signup' element={<SignupForm/>} />
         <Route path='/landing' element={<Landing/>} />
@@ -36,7 +34,6 @@ function App() {
         <Route path="cs/main" element={<DisplayCS />} />
         <Route path="cs/userp" element={<DisplayCSUserP />} />
         <Route path="cs/userp/edit/:id" element={<EditCSItem />} />
-
       </Routes> 
     </Router>
   );

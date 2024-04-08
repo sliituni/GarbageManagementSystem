@@ -7,6 +7,7 @@ import GoogleMapContainer from '../Binguni/GoogleMapContainer';
 import vector3 from './img/vector3.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGift, faRecycle, faChartLine } from '@fortawesome/free-solid-svg-icons';
+import { Footer } from '../Footer';
 
 export default function Landing() {
   return (
@@ -66,8 +67,9 @@ export default function Landing() {
         </div>
       </div>
       </div>
-      <br/><br/><br/><br/><br/><br/>
+      <br/><br/>
       <GoogleMapContainer />
+      <Footer/>
     </div>
   )
 }

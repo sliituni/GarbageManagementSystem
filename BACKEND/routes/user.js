@@ -65,16 +65,21 @@ router.put("/updateProfile/:uId", async(req, res) => {
 });
 
 //Delete User account
-router.route("deleteUser/:uId").delete(async(req, res)=>{
+router.delete("/deleteUser/:uId", async (req, res) => {
   let userId = req.params.uId;
 
-  await User.findByIdAndDelete(userId).then((user)=>{
-    res.status(200).send({status :"User Deleted"})
-  }).catch((err)=>{
+  try {
+    const deletedUser = await User.findByIdAndDelete(userId);
+    if (!deletedUser) {
+      return res.status(404).json({ status: "User not found" });
+    }
+    res.status(200).send({ status: "User Deleted" });
+  } catch (err) {
     console.log(err.message);
-    res.status(500).send({status: "Error with delete user", error: err.message})
-  })
+    res.status(500).send({ status: "Error with deleting user", error: err.message });
+  }
 });
+
 
 // Display (one)
 router.get("/getUser/:uId", async (req, res) => {

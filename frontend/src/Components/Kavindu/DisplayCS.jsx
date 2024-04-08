@@ -3,6 +3,7 @@ import axios from "axios";
 import DisplayCSPopup from "./DisplayCSPopup";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../Header";
+import { Footer } from "../Footer";
 
 function DisplayCS() {
 
@@ -32,7 +33,7 @@ function DisplayCS() {
   return (
     <div>
     <Header/>
-    <div className="container" style={{marginTop:'50px'}}>
+    <div className="container" style={{paddingTop:'150px', paddingBottom: '50px'}}>
       <div className="row justify-content-center">
         <div className="col-md-10">
           <div className="d-flex justify-content-between align-items-center">
@@ -77,6 +78,7 @@ function DisplayCS() {
         <DisplayCSPopup onClose={() => setCSPopupOpen(false)} itemId={selectedItemId} />
       )}
     </div>
+    <Footer/>
     </div>
   );
 }
