@@ -3,30 +3,46 @@ import axios from "axios";
 import DisplayCSPopup from "./DisplayCSPopup";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../Header";
+import Chat from "./Chat";
 
 function DisplayCS() {
-  useEffect(() => {
-    componentDidMount();
-  }, []);
-
-  const componentDidMount = () => {
-    (function(d, m){
-        var kommunicateSettings = 
-            {"appId":"35e442078fbf59a8356b6c76457b0a2cd","popupWidget":true,"automaticChatOpenOnNavigation":true};
-        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
-        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
-        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
-        window.kommunicate = m; m._globals = kommunicateSettings;
-    })(document, window.kommunicate || {});
-/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
-  };
-
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
   const [CSPopupOpen, setCSPopupOpen] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
 
-  const openCSPopup = itemId => {
+  // useEffect(() => {
+  //   // Load Kommunicate script when the component mounts
+  //   const script = document.createElement("script");
+  //   script.type = "text/javascript";
+  //   script.async = true;
+  //   script.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+
+  //   script.onload = () => {
+  //     // Initialize Kommunicate settings
+  //     window.kommunicateSettings = {
+  //       appId: "35e442078fbf59a8356b6c76457b0a2cd",
+  //       popupWidget: true,
+  //       automaticChatOpenOnNavigation: true
+  //     };
+
+  //     if (window.kommunicate) {
+  //       window.kommunicate._globals = window.kommunicateSettings;
+  //     }
+  //   };
+
+  //   // Append the script to the head of the document
+  //   document.head.appendChild(script);
+
+  //   // Clean up function to remove the script when the component unmounts
+  //   return () => {
+  //     if (script.parentNode) {
+  //       script.parentNode.removeChild(script);
+  //     }
+  //   };
+  // }, []);
+
+  const openCSPopup = (itemId) => {
     setSelectedItemId(itemId);
     setCSPopupOpen(true);
   };
@@ -47,6 +63,7 @@ function DisplayCS() {
   return (
     <div>
       <Header />
+      <Chat/>
       <div className="container" style={{ marginTop: "50px" }}>
         <div className="row justify-content-center">
           <div className="col-md-10">
@@ -77,7 +94,7 @@ function DisplayCS() {
             </div>
             <div className="card" style={{ padding: "20px" }}>
               <div className="row">
-                {items.map(item => (
+                {items.map((item) => (
                   <div key={item._id} className="col-md-4 mb-4">
                     <div
                       className="card h-100"
@@ -106,7 +123,9 @@ function DisplayCS() {
             </div>
           </div>
         </div>
-        {CSPopupOpen && <DisplayCSPopup onClose={() => setCSPopupOpen(false)} itemId={selectedItemId} />}
+        {CSPopupOpen && (
+          <DisplayCSPopup onClose={() => setCSPopupOpen(false)} itemId={selectedItemId} />
+        )}
       </div>
     </div>
   );
