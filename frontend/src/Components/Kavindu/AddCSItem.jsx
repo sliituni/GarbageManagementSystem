@@ -130,7 +130,7 @@ function AddCSItem() {
                   <label htmlFor="image">Image:</label><br/>
                   <input
                     type="file"
-                    className="form-control-file"
+                    className="form-control"
                     id="image"
                     accept="image/*"
                     onChange={handleImageUpload}
