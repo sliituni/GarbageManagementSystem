@@ -25,7 +25,7 @@ cloudinary.config({
 
 // Add item route with image upload
 router.route("/add").post(upload.single('image'), async (req, res) => {
-    const { itemName, itemCondition, contactNo, address } = req.body;
+    const { itemName, itemCondition, contactNo, email, address } = req.body;
 
     try {
         // Upload image to Cloudinary
@@ -39,6 +39,7 @@ router.route("/add").post(upload.single('image'), async (req, res) => {
             itemName,
             itemCondition,
             contactNo,
+            email,
             address,
             imageUrl
         });
@@ -63,7 +64,7 @@ router.route("/").get((req, res) => {
 
 router.route("/update/:id").put(upload.single('image'), async (req, res) => {
   const itemId = req.params.id;
-  const { itemName, itemCondition, contactNo, address } = req.body;
+  const { itemName, itemCondition, contactNo, email, address } = req.body;
   let imageUrl;
 
   try {
@@ -86,6 +87,7 @@ router.route("/update/:id").put(upload.single('image'), async (req, res) => {
           itemName,
           itemCondition,
           contactNo,
+          email,
           address
       };
       if (imageUrl) {
@@ -143,5 +145,6 @@ router.get("/getByImageUrl/:imageUrl", async (req, res) => {
         res.status(500).json({ error: "Error fetching item" });
     }
 });
+
 
 module.exports = router;

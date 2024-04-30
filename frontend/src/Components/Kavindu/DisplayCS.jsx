@@ -11,36 +11,6 @@ function DisplayCS() {
   const [CSPopupOpen, setCSPopupOpen] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
 
-  // useEffect(() => {
-  //   // Load Kommunicate script when the component mounts
-  //   const script = document.createElement("script");
-  //   script.type = "text/javascript";
-  //   script.async = true;
-  //   script.src = "https://widget.kommunicate.io/v2/kommunicate.app";
-
-  //   script.onload = () => {
-  //     // Initialize Kommunicate settings
-  //     window.kommunicateSettings = {
-  //       appId: "35e442078fbf59a8356b6c76457b0a2cd",
-  //       popupWidget: true,
-  //       automaticChatOpenOnNavigation: true
-  //     };
-
-  //     if (window.kommunicate) {
-  //       window.kommunicate._globals = window.kommunicateSettings;
-  //     }
-  //   };
-
-  //   // Append the script to the head of the document
-  //   document.head.appendChild(script);
-
-  //   // Clean up function to remove the script when the component unmounts
-  //   return () => {
-  //     if (script.parentNode) {
-  //       script.parentNode.removeChild(script);
-  //     }
-  //   };
-  // }, []);
 
   const openCSPopup = (itemId) => {
     setSelectedItemId(itemId);
