@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const UpdatePopup = ({ userDetails, onClose }) => {
     const [fullname, setFullname] = useState(userDetails.fullname);
@@ -27,29 +29,54 @@ const UpdatePopup = ({ userDetails, onClose }) => {
     return (
         <div className="update-popup" style={{ marginTop: '100px' }}>
             <h2>Update Profile</h2>
-            <div>
-                <label className="form-label">Full Name : </label>
-                <input className="form-control" type="text" value={fullname} onChange={(e) => setFullname(e.target.value)} />
-            </div>
-            <div>
-                <label className="form-label">Address : </label>
-                <input className="form-control" type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
-            </div>
-            <div>
-                <label className="form-label">Email : </label>
-                <input className="form-control" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </div>
-            <div>
-                <label className="form-label">Contact No : </label>
-                <input className="form-control" type="text" value={contactno} onChange={(e) => setContactNo(e.target.value)} />
-            </div>
-            <div>
-                <label className="form-label">New Password : </label>
-                <input className="form-control" type="text" placeholder="New Password" onChange={(e) => setPassword(e.target.value)} />
-            </div>
-            <br/>
-            <button type='button' className='btn btn-success rounded-pill' style={{ width: '200px',marginRight: '10px' }} onClick={updateProfile}><b>Update</b></button>
-            <button type='button' className='btn btn-outline-danger rounded-pill' style={{ width: '200px' }} onClick={onClose}><b>Cancel</b></button>
+            <TextField
+                label="Full Name"
+                value={fullname}
+                onChange={(e) => setFullname(e.target.value)}
+                variant="outlined"
+                fullWidth
+                margin="normal"
+            />
+            <TextField
+                label="Address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                variant="outlined"
+                fullWidth
+                margin="normal"
+            />
+            <TextField
+                label="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                variant="outlined"
+                fullWidth
+                margin="normal"
+            />
+            <TextField
+                label="Contact No"
+                value={contactno}
+                onChange={(e) => setContactNo(e.target.value)}
+                variant="outlined"
+                fullWidth
+                margin="normal"
+            />
+            <TextField
+                label="New Password"
+                type="password"
+                placeholder="New Password"
+                onChange={(e) => setPassword(e.target.value)}
+                variant="outlined"
+                fullWidth
+                margin="normal"
+            />
+            <br />
+            <Button variant="contained" className='rounded-pill' style={{ width: '200px', marginRight: '10px' , backgroundColor: '#34A853', color: 'white'}} onClick={updateProfile}>
+                <b>Update</b>
+            </Button>
+            <Button variant="outlined" color="error" className='rounded-pill' style={{ width: '200px' }} onClick={onClose}>
+                <b>Cancel</b>
+            </Button>
         </div>
     );
 };

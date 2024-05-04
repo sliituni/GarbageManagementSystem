@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 import login from './img/login.png';
 
@@ -62,33 +64,70 @@ const SignupForm = () => {
         <div className='col-sm-6'>
           <h2>Create Account</h2>
           <form onSubmit={onSubmit}>
-            <div className='mb-3'>
-              <label className="form-label">Full Name:</label>
-              <input type="text" className="form-control" name="fullname" value={fullname} onChange={onChange} required />
-            </div>
-            <div className='mb-3'>
-              <label className="form-label">Email:</label>
-              <input type="email" className="form-control" name="email" value={email} onChange={onChange} required />
-            </div>
-            <div className='mb-3'>
-              <label className="form-label">Contact No:</label>
-              <input type="text" className="form-control" name="contactno" value={contactno} onChange={onChange} required />
-            </div>
-            <div className='mb-3'>
-              <label className="form-label">Address:</label>
-              <input type="text" className="form-control" name="address" value={address} onChange={onChange} required />
-            </div>
-            <div className='mb-3'>
-              <label className="form-label">Password:</label>
-              <input type="password" className="form-control" name="password" value={password} onChange={onChange} required />
-            </div>
-            <div className='mb-3'>
-              <label className="form-label">Profile Image:</label>
-              <input type="file" className="form-control" name="image" onChange={onChange} />
-            </div><br/>
-            <div>
-              <button type="submit" className="btn btn-success form-control"><b>Sign Up</b></button>
-            </div><br/>
+            <TextField
+              label="Full Name"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              name="fullname"
+              value={fullname}
+              onChange={onChange}
+              required
+            />
+            <TextField
+              label="Email"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              name="email"
+              value={email}
+              onChange={onChange}
+              required
+            />
+            <TextField
+              label="Contact No"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              name="contactno"
+              value={contactno}
+              onChange={onChange}
+              required
+            />
+            <TextField
+              label="Address"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              name="address"
+              value={address}
+              onChange={onChange}
+              required
+            />
+            <TextField
+              label="Password"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              name="password"
+              value={password}
+              onChange={onChange}
+              type="password"
+              required
+            />
+            <TextField
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              name="image"
+              onChange={onChange}
+              type="file"
+            />
+            <br/>
+            <Button type="submit" variant="contained" color="success" fullWidth style={{ backgroundColor: '#34A853', color: 'white'}}>
+              <b>Sign Up</b>
+            </Button>
+            <br/><br/>
             <p>Already have an account? <Link to={"/"}> Login</Link></p>
           </form>
         </div>
