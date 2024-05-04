@@ -90,7 +90,7 @@ router.put("/updateProfile/:uId", async(req, res) => {
 });
 
 //Delete User account
-router.route("deleteUser/:uId").delete(async(req, res)=>{
+router.route("/deleteUser/:uId").delete(async(req, res)=>{
   let userId = req.params.uId;
 
   await User.findByIdAndDelete(userId).then((user)=>{
