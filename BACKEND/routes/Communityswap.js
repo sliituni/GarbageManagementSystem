@@ -145,6 +145,17 @@ router.get("/getByImageUrl/:imageUrl", async (req, res) => {
         res.status(500).json({ error: "Error fetching item" });
     }
 });
+// Fetch items by email
+router.route("/getByEmail/:email").get(async (req, res) => {
+    const userEmail = req.params.email;
 
+    try {
+        const items = await Communityswap.find({ email: userEmail });
+        res.status(200).json({ status: "Items fetched by email", items });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error fetching items by email" });
+    }
+});
 
 module.exports = router;

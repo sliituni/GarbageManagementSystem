@@ -11,6 +11,7 @@ function AddCSItem() {
   const [contactNo, setContactNo] = useState("");
   const [contactError, setContactError] = useState("");
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [address, setAddress] = useState("");
 
   const navigate = useNavigate();
@@ -26,6 +27,16 @@ function AddCSItem() {
       setContactError("Invalid Contact No format (e.g., 1234567890)");
     } else {
       setContactError("");
+    }
+  };
+
+  const validateEmail = () => {
+    // Regex for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.match(emailRegex)) {
+      setEmailError("Invalid email address");
+    } else {
+      setEmailError("");
     }
   };
 
@@ -122,8 +133,10 @@ function AddCSItem() {
                     placeholder="Enter email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    onBlur={validateEmail}
                     required
                   />
+                  {emailError && <span style={{ color: 'red' }}>{emailError}</span>}
                 </div><br/>
                 <div className="form-group">
                   <label htmlFor="address">Address:</label>
