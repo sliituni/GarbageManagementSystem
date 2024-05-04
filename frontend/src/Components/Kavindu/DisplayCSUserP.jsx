@@ -61,7 +61,7 @@ function DisplayCSUserP() {
                         />
                       )}
                       <h5 className="card-title">{item.itemName}</h5>
-                      {/* Edit and delete buttons */}
+                      
                       <div className="d-flex justify-content-between">
                         <button
                           className="btn btn-primary mr-2"

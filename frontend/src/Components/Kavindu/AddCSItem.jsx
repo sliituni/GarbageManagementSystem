@@ -12,6 +12,8 @@ function AddCSItem() {
   const [itemCondition, setItemCondition] = useState("");
   const [contactNo, setContactNo] = useState("");
   const [contactError, setContactError] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [address, setAddress] = useState("");
 
   const navigate = useNavigate();
@@ -30,6 +32,16 @@ function AddCSItem() {
     }
   };
 
+  const validateEmail = () => {
+    // Regex for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.match(emailRegex)) {
+      setEmailError("Invalid email address");
+    } else {
+      setEmailError("");
+    }
+  };
+
   const sendData = async (e) => {
     e.preventDefault();
     try {
@@ -38,6 +50,7 @@ function AddCSItem() {
       formData.append("itemName", itemName);
       formData.append("itemCondition", itemCondition);
       formData.append("contactNo", contactNo);
+      formData.append("email", email);
       formData.append("address", address);
 
       const response = await axios.post("http://localhost:4011/cs/add", formData, {
@@ -55,6 +68,7 @@ function AddCSItem() {
         setItemName("");
         setItemCondition("");
         setContactNo("");
+        setEmail("");
         setAddress("");
         navigate(-1);
       } else {
@@ -113,6 +127,20 @@ function AddCSItem() {
                     required
                   />
                   {contactError && <span style={{ color: 'red' }}>{contactError}</span>}
+                </div><br/>
+                <div className="form-group">
+                  <label htmlFor="email">Email:</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="email"
+                    placeholder="Enter email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onBlur={validateEmail}
+                    required
+                  />
+                  {emailError && <span style={{ color: 'red' }}>{emailError}</span>}
                 </div><br/>
                 <div className="form-group">
                   <label htmlFor="address">Address:</label>
