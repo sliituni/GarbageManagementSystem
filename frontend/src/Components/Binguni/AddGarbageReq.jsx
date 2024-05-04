@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
+import { Header } from "../Header";
 
 export default function AddGarbageReq() {
     const Navigate = useNavigate();
@@ -62,6 +63,8 @@ export default function AddGarbageReq() {
 }
 
 return (
+    <div>
+    <Header/>
         <div style={{marginTop:'100px'}}>
             <form className="container" onSubmit={sendData}>
                 <h2>Add Garbage Request</h2><br />
@@ -102,7 +105,9 @@ return (
                 <br/>
                 <h6>Collect within 3 days from the requested date *</h6>
                 <button type="submit" className="btn btn-success rounded-pill" style={{ width: '300px' }}><b>Submit</b></button>
+                <br/><br/>
             </form>
+        </div>
         </div>
     )
 }

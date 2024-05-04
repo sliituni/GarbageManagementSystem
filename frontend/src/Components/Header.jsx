@@ -9,9 +9,9 @@ export const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container container-fluid">
-        <a className="navbar-brand" href="#">
-          <img src={logo} alt="Logo" width="100" height="100" />
-        </a>
+      <Link to={'/landing'} className="navbar-brand">
+      <img src={logo} alt="Logo" width="100" height="100" />
+      </Link>
         <center>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
@@ -37,11 +37,11 @@ export const Header = () => {
           </div>
         </center>
         <div>
-          <Link to={"/"} type="button" className="btn btn-success rounded-pill">
+          <Link to={"/"} type="button" className="btn rounded-pill" style={{ width: '150px', background:'#34A853', color:'white' }}>
             <b>Sign out</b>
           </Link>
           <span style={{ marginRight: "10px" }}></span>
-          <Link to={"/profile"} type='button' className="btn btn-success rounded-pill">
+          <Link to={"/profile"} type='button' className="btn rounded-pill" style={{ background:'#34A853', color:'white' }}>
             <FontAwesomeIcon icon={faUser} />
           </Link>
         </div>
