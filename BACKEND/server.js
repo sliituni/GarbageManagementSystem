@@ -33,9 +33,13 @@ connection.once("open", () => {
 const garbageRequestRouter = require("./routes/garbageRequest.js");
 app.use("/garbageRequest",garbageRequestRouter)
 
-
 const userRouter = require("./routes/user.js");
 app.use("/user", userRouter);
+
+//thimalka
+const analiticsRouter = require("./routes/analitics.js");
+app.use("/analitics",analiticsRouter)
+
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on the port number: ${PORT}`);

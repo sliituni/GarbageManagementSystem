@@ -9,6 +9,13 @@ import UserProfile from './Components/Lakmal/UserProfile';
 import AddGarbageReq from './Components/Binguni/AddGarbageReq';
 import GoogleMapContainer from './Components/Binguni/GoogleMapContainer';
 import Landing from './Components/Lakmal/Landing';
+import Addana from './Components/Thimalka/Addana';
+import ViewDetails from './Components/Thimalka/ViewDetails';
+import EditDetails from './Components/Thimalka/EditDetails';
+import Barchart from './Components/Thimalka/Barchart';
+import Piechart from './Components/Thimalka/Piechart';
+import Analiticsdash from './Components/Thimalka/Analiticsdash';
+
 
 
 
@@ -24,6 +31,15 @@ function App() {
         <Route path='/profile' element={<UserProfile/>} />
         <Route path='/addGarbageRequest' element={<AddGarbageReq/>}/>
         <Route path='/GoogleMapContainer' element={<GoogleMapContainer/>}/>
+        <Route path='/addanalitics' element={<Addana/>} />
+        <Route path='/viewanalitics' element={<ViewDetails/>}/>
+        {/* <Route path='/updateanalitics' element={<EditDetails/>}/> */}
+        <Route path='/updateanalitics/:id' element={<EditDetails />} />
+        <Route path='/bar' element={<Barchart/>}/>
+        <Route path='/pie' element={<Piechart/>}/>
+        <Route path='/analiticsdash' element={<Analiticsdash/>}/>
+        
+
 
       </Routes> 
     </Router>
