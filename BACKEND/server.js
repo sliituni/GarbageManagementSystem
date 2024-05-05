@@ -36,18 +36,16 @@ app.use("/garbageRequest",garbageRequestRouter)
 const userRouter = require("./routes/user.js");
 app.use("/user", userRouter);
 
-<<<<<<< HEAD
+
 //thimalka
 const analiticsRouter = require("./routes/analitics.js");
-app.use("/analitics",analiticsRouter)
+app.use("/analitics",analiticsRouter);
 
-=======
 const communityswapRouter = require("./routes/Communityswap.js");
 app.use("/cs", communityswapRouter);
 
 const tableRouter = require("./routes/table.js");
 app.use("/table", tableRouter);
->>>>>>> main
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on the port number: ${PORT}`);
