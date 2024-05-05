@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 // import { Image } from 'cloudinary-react';
 import { useNavigate } from 'react-router-dom';
+import { Header } from "../Header";
+import { Footer } from "../Footer";
 
 function AddCSItem() {
   const [image, setImage] = useState(null);
@@ -10,6 +12,8 @@ function AddCSItem() {
   const [itemCondition, setItemCondition] = useState("");
   const [contactNo, setContactNo] = useState("");
   const [contactError, setContactError] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [address, setAddress] = useState("");
 
   const navigate = useNavigate();
@@ -28,6 +32,16 @@ function AddCSItem() {
     }
   };
 
+  const validateEmail = () => {
+    // Regex for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.match(emailRegex)) {
+      setEmailError("Invalid email address");
+    } else {
+      setEmailError("");
+    }
+  };
+
   const sendData = async (e) => {
     e.preventDefault();
     try {
@@ -36,6 +50,7 @@ function AddCSItem() {
       formData.append("itemName", itemName);
       formData.append("itemCondition", itemCondition);
       formData.append("contactNo", contactNo);
+      formData.append("email", email);
       formData.append("address", address);
 
       const response = await axios.post("http://localhost:4011/cs/add", formData, {
@@ -53,6 +68,7 @@ function AddCSItem() {
         setItemName("");
         setItemCondition("");
         setContactNo("");
+        setEmail("");
         setAddress("");
         navigate(-1);
       } else {
@@ -64,7 +80,9 @@ function AddCSItem() {
   };
 
   return (
-    <div className="container">
+    <div>
+    <Header/>
+    <div className="container" style={{paddingTop:'150px', paddingBottom: '50px'}}>
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div className="card">
@@ -111,6 +129,20 @@ function AddCSItem() {
                   {contactError && <span style={{ color: 'red' }}>{contactError}</span>}
                 </div><br/>
                 <div className="form-group">
+                  <label htmlFor="email">Email:</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="email"
+                    placeholder="Enter email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onBlur={validateEmail}
+                    required
+                  />
+                  {emailError && <span style={{ color: 'red' }}>{emailError}</span>}
+                </div><br/>
+                <div className="form-group">
                   <label htmlFor="address">Address:</label>
                   <input
                     type="text"
@@ -126,7 +158,7 @@ function AddCSItem() {
                   <label htmlFor="image">Image:</label><br/>
                   <input
                     type="file"
-                    className="form-control-file"
+                    className="form-control"
                     id="image"
                     accept="image/*"
                     onChange={handleImageUpload}
@@ -141,8 +173,8 @@ function AddCSItem() {
                       style={{ maxWidth: "300px", maxHeight: "300px" }}
                     />
                   </div>
-                )}<br/>
-                <button type="submit" className="btn btn-primary">
+                )}
+                <button type="submit" className="btn rounded-pill" style={{ background:'#34A853', color:'white', width: '150px' }}>
                   Submit
                 </button>
               </form>
@@ -150,6 +182,8 @@ function AddCSItem() {
           </div>
         </div>
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 }

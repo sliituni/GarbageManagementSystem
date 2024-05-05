@@ -12,7 +12,11 @@ const communityswapSchema = new Schema({
         required: true,
     },
     contactNo:{
-        type: Number,
+        type: String,
+        required: true,
+    },
+    email:{
+        type: String,
         required: true,
     },
     address:{
@@ -26,7 +30,7 @@ const communityswapSchema = new Schema({
     imageUrl: { 
         type: String, 
         required: true,
-    }
+    },
    
 });
 

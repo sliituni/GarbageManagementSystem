@@ -13,6 +13,8 @@ function EditCSItem() {
     imageUrl: "",
   });
 
+  const [contactError, setContactError] = useState("");
+
   useEffect(() => {
     const fetchItem = async () => {
       try {
@@ -33,6 +35,14 @@ function EditCSItem() {
     fetchItem();
   }, [id]);
 
+  const validateContactNo = () => {
+    if (!formData.contactNo.match(/^\d{10}$/)) {
+      setContactError("Invalid Contact No format (e.g., 1234567890)");
+    } else {
+      setContactError("");
+    }
+  };
+
   const handleImageUpload = (e) => {
     // Handle image upload
   };
@@ -40,6 +50,12 @@ function EditCSItem() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Validate contact number before submitting
+      validateContactNo();
+      if (contactError) {
+        return;
+      }
+
       await axios.put(`http://localhost:4011/cs/update/${id}`, formData);
       alert("Item updated successfully");
       navigate(-1); // Navigate back to the previous page
@@ -89,8 +105,10 @@ function EditCSItem() {
                     placeholder="Enter contact number"
                     value={formData.contactNo}
                     onChange={(e) => setFormData({ ...formData, contactNo: e.target.value })}
+                    onBlur={validateContactNo}
                     required
                   />
+                  {contactError && <span style={{ color: 'red' }}>{contactError}</span>}
                 </div>
                 <div className="form-group">
                   <label htmlFor="address">Address:</label>

@@ -41,6 +41,9 @@ app.use("/user", userRouter);
 const communityswapRouter = require("./routes/Communityswap.js");
 app.use("/cs", communityswapRouter);
 
+const tableRouter = require("./routes/table.js");
+app.use("/table", tableRouter);
+
 app.listen(PORT, () => {
     console.log(`Server is up and running on the port number: ${PORT}`);
   });
