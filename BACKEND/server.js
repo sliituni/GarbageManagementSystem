@@ -33,8 +33,6 @@ connection.once("open", () => {
 const garbageRequestRouter = require("./routes/garbageRequest.js");
 app.use("/garbageRequest",garbageRequestRouter);
 
-const scheduleRouter = require("./routes/schedule.js");
-app.use("/schedule", scheduleRouter );
 
 
 const userRouter = require("./routes/user.js");
