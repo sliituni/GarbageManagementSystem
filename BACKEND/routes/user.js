@@ -4,7 +4,49 @@ const User = require('../models/user');
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 const path = require('path');
+const nodemailer = require('nodemailer');
+const expressAsyncHandler = require("express-async-handler");
 
+//nodemailer config
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
+  secure: false, 
+  auth: {
+    user: process.env.SMTP_MAIL,
+    pass: process.env.SMTP_PASSWORD,
+  },
+});
+
+const sendEmail = expressAsyncHandler(async (req, res) => {
+  const { email, subject, message } = req.body;
+
+  try {
+    var mailOption = {
+      from: process.env.SMTP_MAIL,
+      to: email,
+      subject: subject,
+      text: message 
+    };
+
+    transporter.sendMail(mailOption, function (error, info) {
+      if (error) {
+        console.log(error);
+        res.status(500).json({ error: "Failed to send email" });
+      } else {
+        console.log("Email sent successfully!");
+        res.status(200).json({ success: true, message: "Email sent successfully" });
+      }
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to send email" });
+  }
+});
+
+router.post('/sendEmail', sendEmail);
+
+//cloudiary config
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_KEY,
@@ -22,6 +64,7 @@ filename: function (req, file, cb) {
 
 const upload = multer({ storage: storage });
 
+//signup route
 router.post('/signup', upload.single('image'), async (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded." });
@@ -38,14 +81,13 @@ router.post('/signup', upload.single('image'), async (req, res) => {
     });
 
     await newUser.save();
+
     res.json({ success: true, message: "User registered successfully", imageUrl: uploadRes.secure_url });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Error adding account", details: err.message });
   }
 });
-
-
 
 // Login route
 router.post('/login', async (req, res) => {

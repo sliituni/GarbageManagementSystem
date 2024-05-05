@@ -61,7 +61,8 @@ const LoginForm = () => {
           <form onSubmit={onSubmit}>
             <TextField
               label="Email"
-              variant="outlined"
+              variant="filled"
+              color="success"
               fullWidth
               margin="normal"
               name="email"
@@ -71,7 +72,8 @@ const LoginForm = () => {
             />
             <TextField
               label="Password"
-              variant="outlined"
+              variant="filled"
+              color="success"
               fullWidth
               margin="normal"
               name="password"

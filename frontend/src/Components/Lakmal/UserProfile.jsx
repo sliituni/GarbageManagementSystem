@@ -117,16 +117,12 @@ const UserProfile = () => {
               </div>
             ) : (
               userDetails && (
-                <>
-                  <h5>Name: {userDetails.fullname}</h5>
-                  <br />
-                  <h5>Address: {userDetails.address}</h5>
-                  <br />
-                  <h5>Email: {userDetails.email}</h5>
-                  <br />
-                  <h5>Contact No: {userDetails.contactno}</h5>
-                  <br />
-                </>
+                <div style={{fontSize: '20px'}}>
+                  <p><b>Name:</b> {userDetails.fullname}</p>
+                  <p><b>Address:</b> {userDetails.address}</p>
+                  <p><b>Email:</b> {userDetails.email}</p>
+                  <p><b>Contact No:</b> {userDetails.contactno}</p>
+                </div>
               )
             )}
             <div className='row'>
@@ -143,12 +139,12 @@ const UserProfile = () => {
             </div>
           </div>
         </div>
+        {showUpdatePopup && <UpdatePopup userDetails={userDetails} onClose={closeUpdatePopup} />}
       </div>
-      <Footer />
-      {showUpdatePopup && <UpdatePopup userDetails={userDetails} onClose={closeUpdatePopup} />}
+      
       <Snackbar
         open={deleteAlertOpen}
-        message="Are you sure you want to delete your account?"
+        message="Are you sure you want to delete your account? "
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -163,7 +159,9 @@ const UserProfile = () => {
             </Button>
           </>
         }
-      />
+         />
+      {/* posts */}
+      {items.length > 0 && (
       <div className="container" style={{paddingTop:"20px"}}>
         <div className="row justify-content-center">
           <div className="col-md-10">
@@ -202,8 +200,11 @@ const UserProfile = () => {
             </div>
           </div>
         </div>
+        {CSPopupOpen && <DisplayCSPopup onClose={() => setCSPopupOpen(false)} itemId={selectedItemId} />}
       </div>
-      {CSPopupOpen && <DisplayCSPopup onClose={() => setCSPopupOpen(false)} itemId={selectedItemId} />}
+      )}
+      <br/>
+      <Footer />
     </div>
   );
 };

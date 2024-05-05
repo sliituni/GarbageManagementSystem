@@ -14,6 +14,7 @@ import DisplayCS from './Components/Kavindu/DisplayCS';
 import DisplayCSUserP from './Components/Kavindu/DisplayCSUserP';
 import EditCSItem from './Components/Kavindu/EditCSItem';
 import { PHeader } from './Components/PHeader';
+import Notification from './Components/Lakmal/Notification';
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
         <Route path='/signup' element={<SignupForm/>} />
         <Route path='/landing' element={<Landing/>} />
         <Route path='/home' element={<Home/>}/>
-        <Route path='/profile' element={<UserProfile/>} />
+        <Route path='/profile' element={<UserProfile/>}/>
+        <Route path='/Notification' element={<Notification/>}/>
         <Route path='/addGarbageRequest' element={<AddGarbageReq/>}/>
         <Route path='/GoogleMapContainer' element={<GoogleMapContainer/>}/>
 
@@ -34,6 +36,7 @@ function App() {
         <Route path="cs/main" element={<DisplayCS />} />
         <Route path="cs/userp" element={<DisplayCSUserP />} />
         <Route path="cs/userp/edit/:id" element={<EditCSItem />} />
+
       </Routes> 
     </Router>
   );

@@ -55,6 +55,7 @@ const SignupForm = () => {
       });
     } catch (err) {
       console.error(err.response.data);
+      
     }
   };
 
@@ -66,7 +67,8 @@ const SignupForm = () => {
           <form onSubmit={onSubmit}>
             <TextField
               label="Full Name"
-              variant="outlined"
+              variant="filled"
+              color="success"
               fullWidth
               margin="normal"
               name="fullname"
@@ -76,7 +78,8 @@ const SignupForm = () => {
             />
             <TextField
               label="Email"
-              variant="outlined"
+              variant="filled"
+              color="success"
               fullWidth
               margin="normal"
               name="email"
@@ -86,7 +89,8 @@ const SignupForm = () => {
             />
             <TextField
               label="Contact No"
-              variant="outlined"
+              variant="filled"
+              color="success"
               fullWidth
               margin="normal"
               name="contactno"
@@ -96,7 +100,8 @@ const SignupForm = () => {
             />
             <TextField
               label="Address"
-              variant="outlined"
+              variant="filled"
+              color="success"
               fullWidth
               margin="normal"
               name="address"
@@ -106,7 +111,8 @@ const SignupForm = () => {
             />
             <TextField
               label="Password"
-              variant="outlined"
+              variant="filled"
+              color="success"
               fullWidth
               margin="normal"
               name="password"
@@ -116,7 +122,8 @@ const SignupForm = () => {
               required
             />
             <TextField
-              variant="outlined"
+              variant="filled"
+              color="success"
               fullWidth
               margin="normal"
               name="image"
