@@ -15,20 +15,25 @@ import EditDetails from './Components/Thimalka/EditDetails';
 import Barchart from './Components/Thimalka/Barchart';
 import Piechart from './Components/Thimalka/Piechart';
 import Analiticsdash from './Components/Thimalka/Analiticsdash';
-
-
-
+import AddCSItem from './Components/Kavindu/AddCSItem';
+import DisplayCS from './Components/Kavindu/DisplayCS';
+import DisplayCSUserP from './Components/Kavindu/DisplayCSUserP';
+import EditCSItem from './Components/Kavindu/EditCSItem';
+import { PHeader } from './Components/PHeader';
+import Notification from './Components/Lakmal/Notification';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path='/header' element={<Header/>} />
+        <Route path='/pheader' element={<PHeader/>} />
         <Route path='/' element={<LoginForm/>} />
         <Route path='/signup' element={<SignupForm/>} />
         <Route path='/landing' element={<Landing/>} />
         <Route path='/home' element={<Home/>}/>
-        <Route path='/profile' element={<UserProfile/>} />
+        <Route path='/profile' element={<UserProfile/>}/>
+        <Route path='/Notification' element={<Notification/>}/>
         <Route path='/addGarbageRequest' element={<AddGarbageReq/>}/>
         <Route path='/GoogleMapContainer' element={<GoogleMapContainer/>}/>
         <Route path='/addanalitics' element={<Addana/>} />
@@ -40,6 +45,12 @@ function App() {
         <Route path='/analiticsdash' element={<Analiticsdash/>}/>
         
 
+
+        {/* kavindu */}
+        <Route path="cs/main/addItems" element={<AddCSItem />} />
+        <Route path="cs/main" element={<DisplayCS />} />
+        <Route path="cs/userp" element={<DisplayCSUserP />} />
+        <Route path="cs/userp/edit/:id" element={<EditCSItem />} />
 
       </Routes> 
     </Router>
