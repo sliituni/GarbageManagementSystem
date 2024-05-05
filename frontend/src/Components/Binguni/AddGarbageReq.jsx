@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Header } from "../Header";
+import { Footer } from "../Footer";
 
 export default function AddGarbageReq() {
     const Navigate = useNavigate();
@@ -65,7 +66,7 @@ export default function AddGarbageReq() {
 return (
     <div>
     <Header/>
-        <div style={{marginTop:'100px'}}>
+        <div style={{paddingTop:'150px'}}>
             <form className="container" onSubmit={sendData}>
                 <h2>Add Garbage Request</h2><br />
                 <div className="mb-3">
@@ -108,6 +109,7 @@ return (
                 <br/><br/>
             </form>
         </div>
+        <Footer/>
         </div>
     )
 }
