@@ -143,6 +143,17 @@ router.route("/deleteUser/:uId").delete(async(req, res)=>{
   })
 });
 
+// Get all users
+router.get("/getAllUsers", async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json({ status: "Users Fetched", users });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ status: "Error with getting users", error: err.message });
+  }
+});
+
 // Display (one)
 router.get("/getUser/:uId", async (req, res) => {
   try {
