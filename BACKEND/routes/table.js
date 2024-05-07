@@ -27,6 +27,17 @@ router.route("/fulltable").get((req,res)=>{
     })
 })
 
+//display (ONE)
+router.route("/getTable/:tId").get(async(req, res)=>{
+    let tableId = req.params.tId;
+    const user = await Table.findById(tableId).then((table)=>{
+        res.status(200).send({status: "table fetched", table})
+    }).catch(()=>{
+        console.log(err.massage);
+        res.status(500).send({status: "Error with get table",error: err.massage})
+    })
+})
+
 // Update operation
 router.route("/updatetable/:tId").put(async(req,res)=>{
     let tableId = req.params.tId; // Corrected from req.params.gId to req.params.tId

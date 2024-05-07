@@ -8,6 +8,7 @@ import { Button, Snackbar } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import DisplayCSPopup from "../Kavindu/DisplayCSPopup";
 import { useNavigate } from "react-router-dom";
+import Contact from './Contact';
 
 const UserProfile = () => {
   const [userDetails, setUserDetails] = useState(null);
@@ -102,7 +103,7 @@ const UserProfile = () => {
   return (
     <div>
       <PHeader />
-      <div className='container' style={{ paddingTop: '150px', paddingBottom: '200px' }}>
+      <div className='container' style={{ paddingTop: '150px', paddingBottom: '100px' }}>
         <div className='row'>
           <div className='col-sm-6' style={{ marginLeft: '-100px', paddingLeft: '200px'}}>
             <img src={imageUrl} alt='user' width="400" height="400" style={{ borderRadius: '200px'}} />
@@ -141,7 +142,7 @@ const UserProfile = () => {
         </div>
         {showUpdatePopup && <UpdatePopup userDetails={userDetails} onClose={closeUpdatePopup} />}
       </div>
-      
+      <Contact/>
       <Snackbar
         open={deleteAlertOpen}
         message="Are you sure you want to delete your account? "
