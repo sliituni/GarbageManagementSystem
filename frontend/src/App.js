@@ -38,6 +38,7 @@ function App() {
         <Route path='/home' element={<Home/>}/>
         <Route path='/profile' element={<UserProfile/>}/>
         <Route path='/Notification' element={<Notification/>}/>
+
         <Route path='/addGarbageRequest' element={<AddGarbageReq/>}/>
         <Route path='/GoogleMapContainer' element={<GoogleMapContainer/>}/>
         <Route path='/addanalitics' element={<Addana/>} />
