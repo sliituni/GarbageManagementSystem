@@ -42,7 +42,6 @@ const LoginForm = () => {
         password: ''
       });
       setSuccessOpen(true);
-      // Redirect to index.js page after successful login
       navigate('/Landing');
     } catch (err) {
       if (err.response.status === 400) {
