@@ -5,10 +5,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const analiticsSchema = new Schema({
-    id: {
-        type: String,
-        required: true
-    },
     wasteamount: {
         type: String,
         required: true

@@ -1,26 +1,30 @@
 const router = require("express").Router();
 let analitics = require("../models/analitics");
 
-//create oparation
-router.route("/addanalitics").post((req,res)=>{ 
-    const id = req.body.id;
-    const wasteamount = req.body.wasteamount;
-    const date = req.body.date;
-    const wastetype = req.body.wastetype;
+//create operation
+router.route("/addanalitics").post((req, res) => {
+    const { wasteamount, date, wastetype } = req.body;
+
+    if (!wasteamount || !date || !wastetype) {
+        return res.status(400).json({ error: "Missing required fields" });
+    }
 
     const newanalitics = new analitics({
-        id,
         wasteamount,
         date,
         wastetype,
-    })
+    });
 
-    newanalitics.save().then(()=>{
-        res.json("analitics Added")
-    }).catch((err)=>{
-        console.log(err);
-    })
-})
+    newanalitics.save()
+        .then(() => {
+            res.json("Analytics added");
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({ error: "Internal server error" });
+        });
+});
+
 
 //display oparation(ALL)
 router.route("/analitics").get((req,res)=>{
@@ -34,10 +38,9 @@ router.route("/analitics").get((req,res)=>{
 //update oparation
 router.route("/updateanalitics/:aId").put(async(req,res)=>{
     let analiticaId = req.params.aId;
-    const {id,wasteamount,date,wastetype} = req.body;
+    const {wasteamount,date,wastetype} = req.body;
 
     const updateanalitics = {
-        id,
         wasteamount,
         date,
         wastetype

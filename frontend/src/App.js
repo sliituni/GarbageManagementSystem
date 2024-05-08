@@ -21,6 +21,10 @@ import DisplayCSUserP from './Components/Kavindu/DisplayCSUserP';
 import EditCSItem from './Components/Kavindu/EditCSItem';
 import { PHeader } from './Components/PHeader';
 import Notification from './Components/Lakmal/Notification';
+import Users from './Components/Thimalka/Users';
+import AddMonthlyDetails from './Components/Thimalka/AddMonthlyDetails';
+import MonthlyDetailsChart from './Components/Thimalka/MonthlyDetailsChart';
+import MonthlyDetailsTable from './Components/Thimalka/MonthlyDetailsTable';
 
 function App() {
   return (
@@ -42,7 +46,11 @@ function App() {
         <Route path='/updateanalitics/:id' element={<EditDetails />} />
         <Route path='/bar' element={<Barchart/>}/>
         <Route path='/pie' element={<Piechart/>}/>
-        <Route path='/analiticsdash' element={<Analiticsdash/>}/>
+        <Route path='/admin' element={<Analiticsdash/>}/>
+        <Route path='/usermng' element={<Users/>}/>
+        <Route path='/addmonthlyd' element={<AddMonthlyDetails/>}/>
+        <Route path='/mchart' element={<MonthlyDetailsChart/>}/>
+        <Route path='/mdtable' element={<MonthlyDetailsTable/>}/>
         
 
 

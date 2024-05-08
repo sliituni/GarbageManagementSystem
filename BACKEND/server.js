@@ -28,18 +28,16 @@ connection.once("open", () => {
   console.log("MongoDB Connection success!");
 });
 
-
 //Garbage Request Router
 const garbageRequestRouter = require("./routes/garbageRequest.js");
-app.use("/garbageRequest",garbageRequestRouter)
+app.use("/garbageRequest", garbageRequestRouter);
 
 const userRouter = require("./routes/user.js");
 app.use("/user", userRouter);
 
-
 //thimalka
 const analiticsRouter = require("./routes/analitics.js");
-app.use("/analitics",analiticsRouter);
+app.use("/analitics", analiticsRouter);
 
 const communityswapRouter = require("./routes/Communityswap.js");
 app.use("/cs", communityswapRouter);
@@ -47,6 +45,9 @@ app.use("/cs", communityswapRouter);
 const tableRouter = require("./routes/table.js");
 app.use("/table", tableRouter);
 
+const monthlydetailsRouter = require("./routes/monthlydetails.js");
+app.use("/monthlyana", monthlydetailsRouter);
+
 app.listen(PORT, () => {
     console.log(`Server is up and running on the port number: ${PORT}`);
-  });
+});

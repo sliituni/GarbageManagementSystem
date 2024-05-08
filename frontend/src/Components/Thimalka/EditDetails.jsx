@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export default function EditDetails() {
-    const { id } = useParams(); // Retrieve the ID from the URL parameter
-    const navigate = useNavigate(); // Initialize useNavigate
+    const { id } = useParams();
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        id: '',
         wasteamount: '',
         date: '',
         wastetype: ''
@@ -19,10 +20,9 @@ export default function EditDetails() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`http://localhost:4011/analitics/getanalitics/${id}`); // Use the ID to fetch details
+            const response = await axios.get(`http://localhost:4011/analitics/getanalitics/${id}`);
             const data = response.data.analitics;
             setFormData({
-                id: data.id,
                 wasteamount: data.wasteamount,
                 date: data.date,
                 wastetype: data.wastetype
@@ -40,62 +40,55 @@ export default function EditDetails() {
         e.preventDefault();
         try {
             await axios.put(`http://localhost:4011/analitics/updateanalitics/${id}`, formData);
-            navigate('/viewanalitics'); // Navigate to /viewanalitics page
+            navigate('/viewanalitics');
         } catch (error) {
             console.error('Error updating data:', error);
-            // Handle error
         }
     };
 
     return (
-        <div className='container'>
+        <div className='container mt-5'>
             <h2>Edit Waste Details</h2>
             <form onSubmit={handleSubmit}>
                 <div className='mb-3'>
-                    <label className="form-label">ID:</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        name="id"
-                        value={formData.id}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className='mb-3'>
-                    <label className="form-label">Amount:</label>
-                    <input
-                        type="text"
-                        className="form-control"
+                    <TextField
+                        label="Amount"
+                        variant="outlined"
                         name="wasteamount"
+                        color='success'
+                        fullWidth
                         value={formData.wasteamount}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div className='mb-3'>
-                    <label className="form-label">Date:</label>
-                    <input
-                        type="text"
-                        className="form-control"
+                    <TextField
+                        label="Date"
+                        variant="outlined"
                         name="date"
+                        color='success'
+                        fullWidth
                         value={formData.date}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div className='mb-3'>
-                    <label className="form-label">Waste Type:</label>
-                    <input
-                        type="text"
-                        className="form-control"
+                    <TextField
+                        label="Waste Type"
+                        variant="outlined"
                         name="wastetype"
+                        color='success'
+                        fullWidth
                         value={formData.wastetype}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">Edit Details</button>
+                <Button type="submit" variant="contained" color="success">
+                    Edit Details
+                </Button>
             </form>
         </div>
     );

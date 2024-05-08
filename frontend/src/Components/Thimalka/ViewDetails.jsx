@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import AHeader from '../AHeader';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 export default function ViewDetails() {
     const [details, setDetails] = useState([]);
@@ -31,13 +35,22 @@ export default function ViewDetails() {
     };
 
     return (
-        <div className='container'>
+        <div className='container' style={{ paddingTop: '150px' }}>
+            <AHeader />
             <h2>Waste Details</h2>
+            <div style={{ textAlign: 'right', paddingBottom: '10px' }}>
+                <Button component={Link} to='/addanalitics' variant="outlined" color='success'>
+                    Add Waste Details
+                </Button>
+                <span style={{ marginLeft: '5px' }} />
+                <Button component={Link} to='/mdtable' variant="outlined" color='success'>
+                    Edit Monthly Details
+                </Button>
+            </div>
             {error && <div className="alert alert-danger" role="alert">{error}</div>}
             <table className='table'>
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Amount(kg)</th>
                         <th>Date</th>
                         <th>Waste Type</th>
@@ -47,14 +60,15 @@ export default function ViewDetails() {
                 <tbody>
                     {details.map(detail => (
                         <tr key={detail._id}>
-                            <td>{detail.id}</td>
                             <td>{detail.wasteamount}</td>
                             <td>{detail.date}</td>
                             <td>{detail.wastetype}</td>
                             <td>
-                                <button className='btn btn-danger' onClick={() => handleDelete(detail._id)}>Delete</button>
-                                <span style={{ marginLeft: '5px' }} /> {/* Add a small space between buttons */}
-                                <Link to={`/updateanalitics/${detail._id}`} className='btn btn-primary'>Edit</Link>
+                                <Button component={Link} to={`/updateanalitics/${detail._id}`} variant="contained" style={{ background: '#34A853', color: 'white' }}>
+                                    <EditIcon/>
+                                </Button>
+                                <span style={{ marginLeft: '5px' }} />
+                                <Button onClick={() => handleDelete(detail._id)} variant="outlined" color='error'><DeleteIcon /></Button>
                             </td>
                         </tr>
                     ))}

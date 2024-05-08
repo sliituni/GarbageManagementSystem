@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import webtag from './img/webtag1.png';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 export default function Addana() {
     const [formData, setFormData] = useState({
-        id: '',
         wasteamount: '',
         date: '',
         wastetype: ''
     });
 
     const navigate = useNavigate();
-    const { id, wasteamount, date, wastetype } = formData;
+    const { wasteamount, date, wastetype } = formData;
 
     const onChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,7 +28,6 @@ export default function Addana() {
             await axios.post('http://localhost:4011/analitics/addanalitics', formData);
             navigate('/viewanalitics');
             setFormData({
-                id: '',
                 wasteamount: '',
                 date: '',
                 wastetype: ''
@@ -41,21 +44,13 @@ export default function Addana() {
                     <h2>Add Waste details</h2>
                     <form onSubmit={onSubmit}>
                         <div className='mb-3'>
-                            <label className="form-label">ID:</label>
-                            <input
+                            <TextField
+                                label="Amount(kg)"
                                 type="text"
-                                className="form-control"
-                                name="id"
-                                value={id}
-                                onChange={onChange}
-                                required
-                            />
-                        </div>
-                        <div className='mb-3'>
-                            <label className="form-label">Amount(kg):</label>
-                            <input
-                                type="text"
-                                className="form-control"
+                                variant="outlined"
+                                color="success"
+                                fullWidth
+                                margin="normal"
                                 name="wasteamount"
                                 value={wasteamount}
                                 onChange={onChange}
@@ -63,10 +58,12 @@ export default function Addana() {
                             />
                         </div>
                         <div className='mb-3'>
-                            <label className="form-label">Date:</label>
-                            <input
-                                type="text"
-                                className="form-control"
+                            <TextField
+                                type="date"
+                                variant="outlined"
+                                color="success"
+                                fullWidth
+                                margin="normal"
                                 name="date"
                                 value={date}
                                 onChange={onChange}
@@ -74,15 +71,22 @@ export default function Addana() {
                             />
                         </div>
                         <div className='mb-3'>
-                            <label className="form-label">Waste Type:</label>
-                            <input
-                                type="text"
-                                className="form-control"
+                            <Select
+                                id="wastetype"
+                                margin="normal"
+                                color="success"
                                 name="wastetype"
+                                variant="outlined"
                                 value={wastetype}
+                                label="wastetype"
                                 onChange={onChange}
-                                required
-                            />
+                                fullWidth
+                            >
+                                <MenuItem value={'Recycle'}>Recycle</MenuItem>
+                                <MenuItem value={'Compost'}>Compost</MenuItem>
+                                <MenuItem value={'Glass'}>Glass</MenuItem>
+                                <MenuItem value={'Wet Garbage & Food'}>Wet Garbage & Food</MenuItem>
+                            </Select>
                         </div>
                         <div>
                             <button type="submit" className="btn btn-success form-control"><b>Add details</b></button>
