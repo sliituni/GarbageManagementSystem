@@ -28,10 +28,11 @@ connection.once("open", () => {
   console.log("MongoDB Connection success!");
 });
 
-
+//Binguni
 //Garbage Request Router
 const garbageRequestRouter = require("./routes/garbageRequest.js");
-app.use("/garbageRequest",garbageRequestRouter)
+app.use("/garbageRequest",garbageRequestRouter);
+
 
 
 const userRouter = require("./routes/user.js");

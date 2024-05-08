@@ -9,12 +9,14 @@ import UserProfile from './Components/Lakmal/UserProfile';
 import AddGarbageReq from './Components/Binguni/AddGarbageReq';
 import GoogleMapContainer from './Components/Binguni/GoogleMapContainer';
 import Landing from './Components/Lakmal/Landing';
+import AllGarbageRequests from './Components/Binguni/AllGarbageRequests';
 import AddCSItem from './Components/Kavindu/AddCSItem';
 import DisplayCS from './Components/Kavindu/DisplayCS';
 import DisplayCSUserP from './Components/Kavindu/DisplayCSUserP';
 import EditCSItem from './Components/Kavindu/EditCSItem';
 import { PHeader } from './Components/PHeader';
 import Notification from './Components/Lakmal/Notification';
+import ScheduleUpdate from './Components/Binguni/ScheduleUpdate';
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
 
         <Route path='/addGarbageRequest' element={<AddGarbageReq/>}/>
         <Route path='/GoogleMapContainer' element={<GoogleMapContainer/>}/>
+        <Route path='/gbReq' element={<AllGarbageRequests/>}/>
+        <Route path='/scheduleUpdate' element={<ScheduleUpdate/>} />
 
         {/* kavindu */}
         <Route path="cs/main/addItems" element={<AddCSItem />} />
