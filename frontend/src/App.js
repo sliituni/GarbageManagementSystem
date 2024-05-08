@@ -16,6 +16,7 @@ import DisplayCSUserP from './Components/Kavindu/DisplayCSUserP';
 import EditCSItem from './Components/Kavindu/EditCSItem';
 import { PHeader } from './Components/PHeader';
 import Notification from './Components/Lakmal/Notification';
+import ScheduleUpdate from './Components/Binguni/ScheduleUpdate';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/addGarbageRequest' element={<AddGarbageReq/>}/>
         <Route path='/GoogleMapContainer' element={<GoogleMapContainer/>}/>
         <Route path='/gbReq' element={<AllGarbageRequests/>}/>
+        <Route path='/scheduleUpdate' element={<ScheduleUpdate/>} />
 
         {/* kavindu */}
         <Route path="cs/main/addItems" element={<AddCSItem />} />
