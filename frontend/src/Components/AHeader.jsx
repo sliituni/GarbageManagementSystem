@@ -28,7 +28,7 @@ export default function AHeader() {
                 </b>
               </li><span style={{ marginRight: "50px" }}></span>
               <li className="nav-item">
-                <b><a className="nav-link active" aria-current="page" href="#">Inquires</a></b>
+                <b><a className="nav-link active" aria-current="page" href="">Inquires</a></b>
               </li><span style={{ marginRight: "50px" }}></span>
               <li className="nav-item">
                 <b>
