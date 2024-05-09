@@ -1,45 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import axios from 'axios';
 
-const Users = () => {
+function Users() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    // Fetch user data from backend
-    fetch('/user/allUsers') // Create a route in your backend to fetch all users
-      .then(response => response.json())
-      .then(data => {
-        setUsers(data.users); // Assuming your backend returns an object with a key 'users' containing an array of user objects
-      })
-      .catch(error => console.error('Error fetching user data:', error));
+    fetchUsers();
   }, []);
 
+  async function fetchUsers() {
+    try {
+      const response = await axios.get('http://localhost:4011/user/getAllUsers');
+      setUsers(response.data.users);
+    } catch (error) {
+      console.error('Error fetching users:', error.message);
+    }
+  }
+
   return (
-    <div>
-      <h2>User Details</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Contact No</th>
-            <th>Address</th>
-            {/* Add more columns as needed */}
-          </tr>
-        </thead>
-        <tbody>
-          {users.map(user => (
-            <tr key={user._id}>
-              <td>{user.fullname}</td>
-              <td>{user.email}</td>
-              <td>{user.contactno}</td>
-              <td>{user.address}</td>
-              {/* Add more cells for additional user details */}
-            </tr>
+    <div className='container mt-5'>
+    <TableContainer component={Paper}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell><b>Full Name</b></TableCell>
+            <TableCell><b>Email</b></TableCell>
+            <TableCell><b>Contact Number</b></TableCell>
+            <TableCell><b>Address</b></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {users.map((user) => (
+            <TableRow key={user._id}>
+              <TableCell>{user.fullname}</TableCell>
+              <TableCell>{user.email}</TableCell>
+              <TableCell>{user.contactno}</TableCell>
+              <TableCell>{user.address}</TableCell>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
+    </TableContainer>
     </div>
   );
-};
+}
 
 export default Users;

@@ -20,7 +20,7 @@ export default function AHeader() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <b><a className="nav-link active" aria-current="page" href="#">Manage User</a></b>
+                <b><a className="nav-link active" aria-current="page" href="/usermng">Manage User</a></b>
               </li><span style={{ marginRight: "50px" }}></span>
               <li className="nav-item">
                 <b>
@@ -32,7 +32,7 @@ export default function AHeader() {
               </li><span style={{ marginRight: "50px" }}></span>
               <li className="nav-item">
                 <b>
-                  <Link to={'/cs/main'} className="nav-link active" aria-current="page">
+                  <Link to={'/cs/userp'} className="nav-link active" aria-current="page">
                     Community Swap
                   </Link>
                 </b>

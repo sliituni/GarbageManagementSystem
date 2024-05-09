@@ -12,7 +12,6 @@ import Landing from './Components/Lakmal/Landing';
 import Addana from './Components/Thimalka/Addana';
 import ViewDetails from './Components/Thimalka/ViewDetails';
 import EditDetails from './Components/Thimalka/EditDetails';
-import Barchart from './Components/Thimalka/Barchart';
 import Piechart from './Components/Thimalka/Piechart';
 import Analiticsdash from './Components/Thimalka/Analiticsdash';
 import AddCSItem from './Components/Kavindu/AddCSItem';
@@ -45,7 +44,6 @@ function App() {
         <Route path='/viewanalitics' element={<ViewDetails/>}/>
         {/* <Route path='/updateanalitics' element={<EditDetails/>}/> */}
         <Route path='/updateanalitics/:id' element={<EditDetails />} />
-        <Route path='/bar' element={<Barchart/>}/>
         <Route path='/pie' element={<Piechart/>}/>
         <Route path='/admin' element={<Analiticsdash/>}/>
         <Route path='/usermng' element={<Users/>}/>
