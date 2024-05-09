@@ -14,6 +14,7 @@ import ViewDetails from './Components/Thimalka/ViewDetails';
 import EditDetails from './Components/Thimalka/EditDetails';
 import Piechart from './Components/Thimalka/Piechart';
 import Analiticsdash from './Components/Thimalka/Analiticsdash';
+import AllGarbageRequests from './Components/Binguni/AllGarbageRequests';
 import AddCSItem from './Components/Kavindu/AddCSItem';
 import DisplayCS from './Components/Kavindu/DisplayCS';
 import DisplayCSUserP from './Components/Kavindu/DisplayCSUserP';
@@ -24,6 +25,7 @@ import Users from './Components/Thimalka/Users';
 import AddMonthlyDetails from './Components/Thimalka/AddMonthlyDetails';
 import MonthlyDetailsChart from './Components/Thimalka/MonthlyDetailsChart';
 import MonthlyDetailsTable from './Components/Thimalka/MonthlyDetailsTable';
+import ScheduleUpdate from './Components/Binguni/ScheduleUpdate';
 
 function App() {
   return (
@@ -40,6 +42,7 @@ function App() {
 
         <Route path='/addGarbageRequest' element={<AddGarbageReq/>}/>
         <Route path='/GoogleMapContainer' element={<GoogleMapContainer/>}/>
+
         <Route path='/addanalitics' element={<Addana/>} />
         <Route path='/viewanalitics' element={<ViewDetails/>}/>
         {/* <Route path='/updateanalitics' element={<EditDetails/>}/> */}
@@ -50,7 +53,9 @@ function App() {
         <Route path='/addmonthlyd' element={<AddMonthlyDetails/>}/>
         <Route path='/mchart' element={<MonthlyDetailsChart/>}/>
         <Route path='/mdtable' element={<MonthlyDetailsTable/>}/>
-        
+
+        <Route path='/gbReq' element={<AllGarbageRequests/>}/>
+        <Route path='/scheduleUpdate' element={<ScheduleUpdate/>} />
 
 
         {/* kavindu */}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DisplayCSPopup from "./DisplayCSPopup";
 import { useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button';
 import { Header } from "../Header";
 import { Footer } from "../Footer";
 import Chat from "./Chat";
@@ -40,9 +41,9 @@ function DisplayCS() {
               <div style={{ padding: "10px", marginBottom: "10px" }}>
                 <p style={{ color: "#34A853", fontSize: "24px", fontWeight: "bold", marginBottom: "5px", cursor: "pointer", letterSpacing: "5px" }}>OPTION FOR REUSE OVER DISPOSAL</p>
               </div>
-              <button className="btn rounded-pill" style={{ width: "200px", background: "#34A853", color: "white" }} onClick={() => navigate("addItems")}>
+              <Button variant="contained" className='rounded-pill' style={{ width: '200px', background:'#34A853', color:'white' }} onClick={() => navigate("addItems")}>
                 <b>Add Items</b>
-              </button>
+              </Button>
             </div>
             <div className="card" style={{ padding: "20px" }}>
               <div className="row">
