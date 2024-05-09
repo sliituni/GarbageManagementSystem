@@ -7,6 +7,7 @@ import { Grid, Card, CardContent, Typography } from '@mui/material';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import { Footer } from '../Footer';
+import AutoDeleteIcon from '@mui/icons-material/AutoDelete';
 
 export default function Dashboard() {
   const [userCount, setUserCount] = useState(0);
@@ -89,7 +90,7 @@ export default function Dashboard() {
               <p style={{ textAlign: 'left', marginLeft: '10px', fontSize: '20px' }}><b>Garbage request</b></p>
               <CardContent>
                 <Typography>
-                  <PeopleAltIcon sx={{ fontSize: 50 }} />
+                <AutoDeleteIcon sx={{ fontSize: 50 }} />
                 </Typography>
                 <Typography variant="h5" component="h2" style={{ paddingTop: '10px' }}>
                   {garbageCount}
