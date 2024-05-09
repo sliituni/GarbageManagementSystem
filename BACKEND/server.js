@@ -42,8 +42,6 @@ app.use("/user", userRouter);
 const analiticsRouter = require("./routes/analitics.js");
 app.use("/analitics", analiticsRouter);
 
-const userRouter = require("./routes/user.js");
-app.use("/user", userRouter);
 
 const contactRouter = require("./routes/contact.js");
 app.use("/contact", contactRouter);
