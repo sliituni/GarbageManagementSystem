@@ -5,6 +5,8 @@ import UpdatePopup from './UpdatePopup';
 import { PHeader } from '../PHeader';
 import { Footer } from '../Footer';
 import { Button, Snackbar } from '@mui/material';
+import { Typography, IconButton } from "@mui/material";
+import { Edit as EditIcon, Delete as DeleteIcon } from "@mui/icons-material";
 import CircularProgress from '@mui/material/CircularProgress';
 import DisplayCSPopup from "../Kavindu/DisplayCSPopup";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +22,8 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const [CSPopupOpen, setCSPopupOpen] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
+  const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
+  const [selectedItemToDelete, setSelectedItemToDelete] = useState(null);
 
   const fetchUserDetails = async () => {
     try {
@@ -36,8 +40,23 @@ const UserProfile = () => {
   const deleteUser = async () => {
     try {
       const userId = localStorage.getItem('userId');
+
+      // Fetch all items associated with the user
+      const response = await axios.get(`http://localhost:4011/cs/getByEmail/${userDetails.email}`);
+      const userItems = response.data.items;
+
+      // Delete each item associated with the user
+      await Promise.all(userItems.map(async (item) => {
+        await axios.delete(`http://localhost:4011/cs/delete/${item._id}`);
+      }));
+
+      // Once all items are deleted, delete the user's account
       await axios.delete(`http://localhost:4011/user/deleteUser/${userId}`);
+      
+      // Remove user id from local storage
       localStorage.removeItem('userId');
+
+      // Redirect to home page or perform any other action
       window.location.href = '/';
     } catch (error) {
       console.error('Error deleting user:', error.message);
@@ -65,19 +84,21 @@ const UserProfile = () => {
     setCSPopupOpen(true);
   };
 
-  const deleteItem = async (itemId) => {
-    // Display confirmation dialog
-    const confirmDelete = window.confirm("Are you sure you want to delete this item?");
-    if (!confirmDelete) return;
+  const deleteItem = (itemId) => {
+    setSelectedItemToDelete(itemId);
+    setDeleteConfirmationOpen(true);
+  };
 
+  const confirmDeleteItem = async () => {
     try {
-      await axios.delete(`http://localhost:4011/cs/delete/${itemId}`);
+      await axios.delete(`http://localhost:4011/cs/delete/${selectedItemToDelete}`);
       // Remove the deleted item from the state
-      setItems(items.filter((item) => item._id !== itemId));
+      setItems(items.filter((item) => item._id !== selectedItemToDelete));
       console.log("Item deleted successfully");
     } catch (error) {
       console.error("Error deleting item:", error);
     }
+    setDeleteConfirmationOpen(false);
   };
 
   useEffect(() => {
@@ -90,7 +111,7 @@ const UserProfile = () => {
         console.error("Error:", error);
       }
     };
-  
+
     if (userDetails) {
       fetchItems();
     }
@@ -105,8 +126,8 @@ const UserProfile = () => {
       <PHeader />
       <div className='container' style={{ paddingTop: '150px', paddingBottom: '100px' }}>
         <div className='row'>
-          <div className='col-sm-6' style={{ marginLeft: '-100px', paddingLeft: '200px'}}>
-            <img src={imageUrl} alt='user' width="400" height="400" style={{ borderRadius: '200px'}} />
+          <div className='col-sm-6' style={{ marginLeft: '-100px', paddingLeft: '200px' }}>
+            <img src={imageUrl} alt='user' width="400" height="400" style={{ borderRadius: '200px' }} />
           </div>
           <div className='col-sm-6'>
             <h2><b>Profile Details</b></h2>
@@ -114,11 +135,11 @@ const UserProfile = () => {
             <br />
             {loading ? (
               <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <CircularProgress color="success"/>
+                <CircularProgress color="success" />
               </div>
             ) : (
               userDetails && (
-                <div style={{fontSize: '20px'}}>
+                <div style={{ fontSize: '20px' }}>
                   <p><b>Name:</b> {userDetails.fullname}</p>
                   <p><b>Address:</b> {userDetails.address}</p>
                   <p><b>Email:</b> {userDetails.email}</p>
@@ -133,7 +154,7 @@ const UserProfile = () => {
                 </Button>
               </div>
               <div className='col-sm-6'>
-                <Button variant="outlined" color="error" className='rounded-pill' style={{ width: '300px'}} onClick={handleDeleteConfirm}>
+                <Button variant="outlined" color="error" className='rounded-pill' style={{ width: '300px' }} onClick={handleDeleteConfirm}>
                   <b>Delete Account</b>
                 </Button>
               </div>
@@ -142,7 +163,7 @@ const UserProfile = () => {
         </div>
         {showUpdatePopup && <UpdatePopup userDetails={userDetails} onClose={closeUpdatePopup} />}
       </div>
-      <Contact/>
+      <Contact />
       <Snackbar
         open={deleteAlertOpen}
         message="Are you sure you want to delete your account? "
@@ -160,51 +181,67 @@ const UserProfile = () => {
             </Button>
           </>
         }
-         />
+      />
       {/* posts */}
       {items.length > 0 && (
-      <div className="container" style={{paddingTop:"20px"}}>
-        <div className="row justify-content-center">
-          <div className="col-md-10">
-            <h2>My Posts</h2>
-            <div className="card" style={{ padding: "20px" }}>
-              <div className="row">
-                {items.map((item) => (
-                  <div key={item._id} className="col-md-4 mb-4">
-                    <div className="card h-100" style={{ backgroundColor: "rgba(144, 238, 144, 0.5)" }}>
-                      <div className="card-body d-flex flex-column justify-content-between">
-                        {item.imageUrl && (
-                          <img
-                            src={item.imageUrl}
-                            alt={item.itemName}
-                            style={{ maxWidth: "100%", maxHeight: "300px", cursor: "pointer" }}
-                            onClick={() => openCSPopup(item._id)}
-                          />
-                        )}
-                        <h5 className="card-title">{item.itemName}</h5>
-                        <div className="d-flex justify-content-between">
-                          <button
-                            className="btn btn-primary mr-2"
-                            onClick={() => navigate(`/cs/userp/edit/${item._id}`)}
-                          >
-                            Edit
-                          </button>
-                          <button className="btn btn-danger" onClick={() => deleteItem(item._id)}>
-                            Delete
-                          </button>
+        <div className="container" style={{ paddingTop: "20px" }}>
+          <div className="row justify-content-center">
+            <div className="col-md-10">
+              <h2>My Posts</h2>
+              <div className="card" style={{ padding: "20px" }}>
+                <div className="row">
+                  {items.map((item) => (
+                    <div key={item._id} className="col-md-4 mb-4">
+                      <div className="card h-100" style={{ backgroundColor: "rgba(144, 238, 144, 0.5)" }}>
+                        <div className="card-body d-flex flex-column justify-content-between">
+                          {item.imageUrl && (
+                            <img
+                              src={item.imageUrl}
+                              alt={item.itemName}
+                              style={{ maxWidth: "100%", maxHeight: "300px", cursor: "pointer" }}
+                              onClick={() => openCSPopup(item._id)}
+                            />
+                          )}
+                          <Typography variant="h6" component="h2" gutterBottom>{item.itemName}</Typography>
+                          <div className="d-flex justify-content-end">
+                            <IconButton color="success" onClick={() => navigate(`/cs/userp/edit/${item._id}`)}>
+                              <EditIcon />
+                            </IconButton>
+                            <IconButton color="error" variant="outlined" onClick={() => deleteItem(item._id)}>
+                              <DeleteIcon />
+                            </IconButton>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
+          {CSPopupOpen && <DisplayCSPopup onClose={() => setCSPopupOpen(false)} itemId={selectedItemId} />}
         </div>
-        {CSPopupOpen && <DisplayCSPopup onClose={() => setCSPopupOpen(false)} itemId={selectedItemId} />}
-      </div>
       )}
-      <br/>
+      {/* Snackbar for item deletion confirmation */}
+      <Snackbar
+        open={deleteConfirmationOpen}
+        message="Are you sure you want to delete this item?"
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        action={
+          <>
+            <Button color="success" size="small" onClick={() => setDeleteConfirmationOpen(false)}>
+              Cancel
+            </Button>
+            <Button color="error" size="small" onClick={confirmDeleteItem}>
+              Delete
+            </Button>
+          </>
+        }
+      />
+      <br />
       <Footer />
     </div>
   );
