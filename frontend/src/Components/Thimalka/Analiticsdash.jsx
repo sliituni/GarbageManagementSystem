@@ -72,7 +72,7 @@ export default function Dashboard() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid component={Link} to={'#'} item xs={12} sm={4} style={{ textDecoration: 'none' }}>
+          <Grid component={Link} to={'/AllContact'} item xs={12} sm={4} style={{ textDecoration: 'none' }}>
             <Card style={{ height: '170px', backgroundColor: '#9fe1b5' }}>
               <p style={{ textAlign: 'left', marginLeft: '10px', fontSize: '20px' }}><b>Inquires</b></p>
               <CardContent>
