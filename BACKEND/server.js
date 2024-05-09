@@ -36,6 +36,9 @@ app.use("/garbageRequest",garbageRequestRouter);
 const userRouter = require("./routes/user.js");
 app.use("/user", userRouter);
 
+const contactRouter = require("./routes/contact.js");
+app.use("/contact", contactRouter);
+
 const communityswapRouter = require("./routes/Communityswap.js");
 app.use("/cs", communityswapRouter);
 
