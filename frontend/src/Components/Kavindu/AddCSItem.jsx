@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { Image } from 'cloudinary-react';
 import { useNavigate } from 'react-router-dom';
 import { Header } from "../Header";
 import { Footer } from "../Footer";
+import { 
+  Button,
+  TextField,
+  Card,
+  CardHeader,
+  CardContent,
+  Container,
+  Grid,
+  Typography
+} from '@mui/material';
 
 function AddCSItem() {
   const [image, setImage] = useState(null);
@@ -81,109 +90,95 @@ function AddCSItem() {
 
   return (
     <div>
-    <Header/>
-    <div className="container" style={{paddingTop:'150px', paddingBottom: '50px'}}>
-      <div className="row justify-content-center">
-        <div className="col-md-8">
-          <div className="card">
-            <div className="card-header">Add Items</div><br/>
-            <div className="card-body">
-              <form onSubmit={sendData}>
-                
-                <div className="form-group">
-                  <label htmlFor="itemName">Item Name:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="itemName"
+      <Header/>
+      <Container style={{paddingTop:'150px', paddingBottom: '50px'}}>
+        <Grid container justifyContent="center">
+          <Grid item xs={12} sm={8}>
+            <Card>
+              <CardHeader title="Add Items" />
+              <CardContent>
+                <form onSubmit={sendData}>
+                  <TextField
+                    fullWidth
+                    label="Item Name"
                     placeholder="Enter item name"
                     value={itemName}
                     onChange={(e) => setItemName(e.target.value)}
                     required
+                    margin="normal"
                   />
-                </div><br/>
-                <div className="form-group">
-                  <label htmlFor="itemCondition">Item Condition:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="itemCondition"
-                    placeholder="Enter item Condition"
+                  <TextField
+                    fullWidth
+                    label="Item Condition"
+                    placeholder="Enter item condition"
                     value={itemCondition}
                     onChange={(e) => setItemCondition(e.target.value)}
                     required
+                    margin="normal"
                   />
-                </div><br/>
-                <div className="form-group">
-                  <label htmlFor="contactNo">Contact No:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="contactNo"
+                  <TextField
+                    fullWidth
+                    label="Contact No"
                     placeholder="Enter contact number"
                     value={contactNo}
                     onChange={(e) => setContactNo(e.target.value)}
                     onBlur={validateContactNo}
+                    error={!!contactError}
+                    helperText={contactError}
                     required
+                    margin="normal"
                   />
-                  {contactError && <span style={{ color: 'red' }}>{contactError}</span>}
-                </div><br/>
-                <div className="form-group">
-                  <label htmlFor="email">Email:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="email"
+                  <TextField
+                    fullWidth
+                    label="Email"
                     placeholder="Enter email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     onBlur={validateEmail}
+                    error={!!emailError}
+                    helperText={emailError}
                     required
+                    margin="normal"
                   />
-                  {emailError && <span style={{ color: 'red' }}>{emailError}</span>}
-                </div><br/>
-                <div className="form-group">
-                  <label htmlFor="address">Address:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="address"
+                  <TextField
+                    fullWidth
+                    label="Address"
                     placeholder="Enter address"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     required
+                    margin="normal"
                   />
-                </div><br/>
-                <div className="form-group">
-                  <label htmlFor="image">Image:</label><br/>
                   <input
                     type="file"
-                    className="form-control"
                     id="image"
                     accept="image/*"
                     onChange={handleImageUpload}
                     required
                   />
-                </div><br/>
-                {previewImage && (
-                  <div>
-                    <img
-                      src={previewImage}
-                      alt="Preview"
-                      style={{ maxWidth: "300px", maxHeight: "300px" }}
-                    />
-                  </div>
-                )}
-                <button type="submit" className="btn rounded-pill" style={{ background:'#34A853', color:'white', width: '150px' }}>
-                  Submit
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <Footer/>
+                  {previewImage && (
+                    <div>
+                      <img
+                        src={previewImage}
+                        alt="Preview"
+                        style={{ maxWidth: "300px", maxHeight: "300px" }}
+                      />
+                    </div>
+                  )}
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    style={{ background:'#34A853', color:'white', width: '150px' }}
+                  >
+                    Submit
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </Container>
+      <Footer/>
     </div>
   );
 }
