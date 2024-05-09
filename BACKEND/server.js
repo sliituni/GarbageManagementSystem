@@ -33,8 +33,6 @@ connection.once("open", () => {
 const garbageRequestRouter = require("./routes/garbageRequest.js");
 app.use("/garbageRequest",garbageRequestRouter);
 
-
-
 const userRouter = require("./routes/user.js");
 app.use("/user", userRouter);
 

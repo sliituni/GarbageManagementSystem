@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import emailjs from 'emailjs-com';
 
 export default function Contact() {
+    const [from_name, setFrom_name] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
     const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -28,6 +29,7 @@ export default function Contact() {
         const userId = 'Mupo9YGoJeMdEozJj';
 
         const templateParams = {
+            from_name: from_name,
             subject: subject,
             message: message
         };
@@ -35,6 +37,7 @@ export default function Contact() {
         emailjs.send('service_b8xy4w8', templateId, templateParams, userId)
             .then((result) => {
                 console.log('Email sent successfully:', result.text);
+                setFrom_name('');
                 setSubject('');
                 setMessage('');
                 setSnackbarMessage('Email sent successfully!');
@@ -54,6 +57,16 @@ export default function Contact() {
                 <Card style={{ width: '1000px', borderRadius: '20px' }}>
                     <CardContent style={{ width: '1000px' }}>
                         <h3>Contact Us</h3>
+                        <TextField
+                            label="Email"
+                            variant='outlined'
+                            color='success'
+                            fullWidth
+                            margin='normal'
+                            value={from_name}
+                            onChange={(e) => setFrom_name(e.target.value)}
+                            required
+                        />
                         <TextField
                             label="Subject"
                             variant='outlined'
