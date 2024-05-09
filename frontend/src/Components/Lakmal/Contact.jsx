@@ -5,9 +5,10 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import emailjs from 'emailjs-com';
+import axios from 'axios'; // Import Axios for making HTTP requests
 
 export default function Contact() {
+    const [from_name, setFrom_name] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
     const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -23,25 +24,25 @@ export default function Contact() {
     };
 
     const sendEmail = () => {
-        // Replace these values with your MailJS template ID and your MailJS user ID
-        const templateId = 'template_jlv2ywo';
-        const userId = 'Mupo9YGoJeMdEozJj';
-
-        const templateParams = {
+        const formData = {
+            from_name: from_name,
             subject: subject,
             message: message
         };
 
-        emailjs.send('service_b8xy4w8', templateId, templateParams, userId)
-            .then((result) => {
-                console.log('Email sent successfully:', result.text);
+        // Make a POST request to your Express backend
+        axios.post('http://localhost:4011/contact/addContact', formData)
+            .then(response => {
+                console.log('Response:', response.data);
+                setFrom_name('');
                 setSubject('');
                 setMessage('');
                 setSnackbarMessage('Email sent successfully!');
                 setSnackbarSeverity('success');
                 setSnackbarOpen(true);
-            }, (error) => {
-                console.error('Failed to send email:', error.text);
+            })
+            .catch(error => {
+                console.error('Error:', error);
                 setSnackbarMessage('Failed to send email. Please try again later.');
                 setSnackbarSeverity('error');
                 setSnackbarOpen(true);
@@ -54,6 +55,16 @@ export default function Contact() {
                 <Card style={{ width: '1000px', borderRadius: '20px' }}>
                     <CardContent style={{ width: '1000px' }}>
                         <h3>Contact Us</h3>
+                        <TextField
+                            label="Email"
+                            variant='outlined'
+                            color='success'
+                            fullWidth
+                            margin='normal'
+                            value={from_name}
+                            onChange={(e) => setFrom_name(e.target.value)}
+                            required
+                        />
                         <TextField
                             label="Subject"
                             variant='outlined'
