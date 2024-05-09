@@ -6,55 +6,38 @@ import axios from 'axios';
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 const PieChartMui = () => {
-  const [data, setData] = useState([
-    { name: 'Recycle', value: 0 },
-    { name: 'Compost', value: 0 },
-    { name: 'Glass', value: 0 },
-    { name: 'Wet Garbage & Food', value: 0 },
-  ]);
-
-  const [details, setDetails] = useState([]);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if (details.length > 0) {
-      calculateWasteTypeSums();
-    }
-  }, [details]);
-
   const fetchData = async () => {
     try {
       const response = await axios.get('http://localhost:4011/analitics/analitics');
-      setDetails(response.data);
+      const responseData = formatData(response.data);
+      setData(responseData); // Setting the formatted data to state
     } catch (error) {
-      setError('Error fetching data from server. Please try again later.');
       console.error('Error fetching data:', error);
     }
   };
 
-  const calculateWasteTypeSums = () => {
-    const sums = {};
-    details.forEach((detail) => {
-      if (sums[detail.wastetype]) {
-        sums[detail.wastetype] += detail.wasteamount;
+  function formatData(data) {
+    const formattedData = {};
+    data.forEach(item => {
+      if (formattedData[item.wastetype]) {
+        formattedData[item.wastetype] += parseInt(item.wasteamount, 10);
       } else {
-        sums[detail.wastetype] = detail.wasteamount;
+        formattedData[item.wastetype] = parseInt(item.wasteamount, 10);
       }
     });
-    updateChartData(sums);
-  };
 
-  const updateChartData = (sums) => {
-    const updatedData = data.map((entry) => ({
-      ...entry,
-      value: sums[entry.name] || 0,
-    }));
-    setData(updatedData);
-  };
+    const result = [];
+    for (const [wastetype, value] of Object.entries(formattedData)) {
+      result.push({ name: wastetype, value });
+    }
+    return result;
+  }
 
   return (
     <Container>
@@ -84,7 +67,7 @@ const PieChartMui = () => {
           <Box sx={{ pl: 2 }}>
             {data.map((entry, index) => (
               <Box key={entry.name} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <Box sx={{ width: 10, height: 10, backgroundColor: COLORS[index], mr: 1 }} />
+                <Box sx={{ width: 10, height: 10, backgroundColor: COLORS[index % COLORS.length], mr: 1 }} />
                 <Typography>{entry.name}</Typography>
                 <Typography variant="body2" sx={{ ml: 1, color: 'text.secondary' }}>
                   {`${entry.value} units`}
