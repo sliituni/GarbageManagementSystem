@@ -28,9 +28,9 @@ const AllContactDetails = () => {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>From Gmail</TableCell>
-                            <TableCell>Subject</TableCell>
-                            <TableCell>Message</TableCell>
+                            <TableCell><b>From Gmail</b></TableCell>
+                            <TableCell><b>Subject</b></TableCell>
+                            <TableCell><b>Message</b></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
