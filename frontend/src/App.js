@@ -28,6 +28,7 @@ import MonthlyDetailsTable from './Components/Thimalka/MonthlyDetailsTable';
 import ScheduleUpdate from './Components/Binguni/ScheduleUpdate';
 import AllContactDetails from './Components/Lakmal/AllContactDetails';
 import AdminLogin from './Components/Thimalka/AdminLogin';
+import GarbageAnalitics from './Components/Lakmal/GarbageAnalitics';
 
 function App() {
   return (
@@ -41,7 +42,8 @@ function App() {
         <Route path='/home' element={<Home/>}/>
         <Route path='/profile' element={<UserProfile/>}/>
         <Route path='/Notification' element={<Notification/>}/>
-        <Route path='/AllContact' element={<AllContactDetails/>} />  
+        <Route path='/AllContact' element={<AllContactDetails/>} />
+        <Route path='/Allanalitics' element={<GarbageAnalitics/>} />
 
         <Route path='/addGarbageRequest' element={<AddGarbageReq/>}/>
         <Route path='/GoogleMapContainer' element={<GoogleMapContainer/>}/>

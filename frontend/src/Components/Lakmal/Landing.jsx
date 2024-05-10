@@ -59,7 +59,7 @@ export default function Landing() {
               </div>
               <br />
               <div>
-              <Link to={''} className='btn' style={{ width: '650px', height: '25%', padding: 20, background: '#1111', borderRadius: 20, justifyContent: 'flex-start', alignItems: 'center', gap: 45, display: 'inline-flex' }}>
+              <Link to={'/Allanalitics'} className='btn' style={{ width: '650px', height: '25%', padding: 20, background: '#1111', borderRadius: 20, justifyContent: 'flex-start', alignItems: 'center', gap: 45, display: 'inline-flex' }}>
                 <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
                   <div style={{ alignSelf: 'stretch', padding: 20, background: '#1CB9E1', borderRadius: 15, overflow: 'hidden', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 10, display: 'inline-flex' }}>
                     <h3><FontAwesomeIcon icon={faChartLine} /></h3>
