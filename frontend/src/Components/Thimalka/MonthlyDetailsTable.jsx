@@ -11,15 +11,15 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 600,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
   boxShadow: 24,
+  borderRadius: '10px',
   p: 4,
 };
 
 const MonthlyDetailsTable = () => {
   const [monthlyDetails, setMonthlyDetails] = useState([]);
   const [editingDetail, setEditingDetail] = useState(null);
-  const [openModal, setOpenModal] = useState(false); // State to manage modal open/close
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     axios.get('http://localhost:4011/monthlyana/monthlyDetails')
@@ -33,16 +33,16 @@ const MonthlyDetailsTable = () => {
 
   const handleEdit = (detail) => {
     setEditingDetail(detail);
-    setOpenModal(true); // Open the modal when editing is initiated
+    setOpenModal(true);
   };
 
   const handleCancel = () => {
     setEditingDetail(null);
-    setOpenModal(false); // Close the modal when editing is cancelled
+    setOpenModal(false);
   };
 
   const handleSave = () => {
-    setOpenModal(false); // Close the modal after saving
+    setOpenModal(false);
   };
 
   return (
@@ -53,7 +53,7 @@ const MonthlyDetailsTable = () => {
             <TableRow>
               <TableCell><b>Month</b></TableCell>
               <TableCell><b>Amount</b></TableCell>
-              <TableCell ><b>Action</b></TableCell>
+              <TableCell><b>Action</b></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -76,7 +76,7 @@ const MonthlyDetailsTable = () => {
         onClose={handleCancel}
         aria-labelledby="modal-edit-detail"
         aria-describedby="modal-edit-detail-description"
-      >
+       >
         <Box sx={style}> {/* Use Box component with style */}
           <EditTableForm monthlyDetail={editingDetail} onCancel={handleCancel} onSave={handleSave} />
         </Box>

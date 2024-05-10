@@ -65,7 +65,7 @@ function EditCSItem() {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div className="card">
@@ -122,17 +122,6 @@ function EditCSItem() {
                     required
                   />
                 </div><br/>
-                {/* <div className="form-group">
-                  <label htmlFor="image">Image:</label>
-                  <input
-                    type="file"
-                    className="form-control-file"
-                    id="image"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    required
-                  />
-                </div> */}
                 <button type="submit" className="btn btn-primary">
                   Update
                 </button>

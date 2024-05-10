@@ -27,6 +27,7 @@ import MonthlyDetailsChart from './Components/Thimalka/MonthlyDetailsChart';
 import MonthlyDetailsTable from './Components/Thimalka/MonthlyDetailsTable';
 import ScheduleUpdate from './Components/Binguni/ScheduleUpdate';
 import AllContactDetails from './Components/Lakmal/AllContactDetails';
+import AdminLogin from './Components/Thimalka/AdminLogin';
 
 function App() {
   return (
@@ -50,14 +51,16 @@ function App() {
         {/* <Route path='/updateanalitics' element={<EditDetails/>}/> */}
         <Route path='/updateanalitics/:id' element={<EditDetails />} />
         <Route path='/pie' element={<Piechart/>}/>
-        <Route path='/admin' element={<Analiticsdash/>}/>
+        <Route path='/admindash' element={<Analiticsdash/>}/>
         <Route path='/usermng' element={<Users/>}/>
         <Route path='/addmonthlyd' element={<AddMonthlyDetails/>}/>
         <Route path='/mchart' element={<MonthlyDetailsChart/>}/>
         <Route path='/mdtable' element={<MonthlyDetailsTable/>}/>
+        <Route path='/admin' element={<AdminLogin/>}/>
 
         <Route path='/gbReq' element={<AllGarbageRequests/>}/>
         <Route path='/scheduleUpdate' element={<ScheduleUpdate/>} />
+
 
 
         {/* kavindu */}

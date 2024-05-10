@@ -7,6 +7,9 @@ import { Grid, Card, CardContent, Typography } from '@mui/material';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import { Footer } from '../Footer';
+import AutoDeleteIcon from '@mui/icons-material/AutoDelete';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 export default function Dashboard() {
   const [userCount, setUserCount] = useState(0);
@@ -52,7 +55,6 @@ export default function Dashboard() {
     }
   }
 
-
   return (
     <div>
       <div className='container' style={{ paddingTop: '150px', textAlign: 'center' }}>
@@ -60,7 +62,7 @@ export default function Dashboard() {
         <Grid container spacing={2}>
           <Grid component={Link} to={'/usermng'} item xs={12} sm={4} style={{ textDecoration: 'none' }}>
             <Card style={{ height: '170px', backgroundColor: '#9fe1b5' }}>
-              <p style={{ textAlign: 'left', marginLeft: '10px', fontSize: '20px' }}><b>User</b></p>
+              <p style={{ textAlign: 'left', marginLeft: '10px', fontSize: '20px' }}><b>Users</b></p>
               <CardContent>
                 <Typography>
                   <PeopleAltIcon sx={{ fontSize: 50 }} />
@@ -86,10 +88,10 @@ export default function Dashboard() {
           </Grid>
           <Grid component={Link} to={'/gbReq'} item xs={12} sm={4} style={{ textDecoration: 'none' }}>
             <Card style={{ height: '170px', backgroundColor: '#9fe1b5' }}>
-              <p style={{ textAlign: 'left', marginLeft: '10px', fontSize: '20px' }}><b>Garbage request</b></p>
+              <p style={{ textAlign: 'left', marginLeft: '10px', fontSize: '20px' }}><b>Garbage requests</b></p>
               <CardContent>
                 <Typography>
-                  <PeopleAltIcon sx={{ fontSize: 50 }} />
+                  <AutoDeleteIcon sx={{ fontSize: 50 }} />
                 </Typography>
                 <Typography variant="h5" component="h2" style={{ paddingTop: '10px' }}>
                   {garbageCount}
@@ -98,7 +100,29 @@ export default function Dashboard() {
             </Card>
           </Grid>
         </Grid>
-        <div style={{ marginTop: '100px' }}>
+        <div style={{ paddingTop: '15px' }}>
+          <Grid container spacing={2}>
+            <Grid component={Link} to={'/Notification'} item xs={12} sm={6} style={{ textDecoration: 'none' }}>
+              <Card style={{ height: '100px', backgroundColor: '#9fe1b5' }}>
+                <CardContent>
+                  <Typography variant="h5" component="h2" style={{ paddingTop: '20px', paddingLeft: '200px' }}>
+                    <p style={{ textAlign: 'left', marginLeft: '10px', fontSize: '20px' }}><b><NotificationsIcon /> Notifications</b></p>
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid component={Link} to={'/scheduleUpdate'} item xs={12} sm={6} style={{ textDecoration: 'none' }}>
+              <Card style={{ height: '100px', backgroundColor: '#9fe1b5' }}>
+                <CardContent>
+                  <Typography variant="h5" component="h2" style={{ paddingTop: '20px', paddingLeft: '200px' }}>
+                    <p style={{ textAlign: 'left', marginLeft: '10px', fontSize: '20px' }}><b><CalendarMonthIcon /> Update shedule</b></p>
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+        <div style={{ marginTop: '50px' }}>
           <h4>Total Garbage Waste Amount</h4>
           <div style={{ marginTop: '50px' }}>
             <MonthlyDetailsChart />
