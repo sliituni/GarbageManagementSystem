@@ -3,6 +3,7 @@ import axios from 'axios';
 import { TextField, Button, Grid, Typography } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
+import AHeader from '../AHeader';
 
 const UpdateForm = () => {
   const [openAlert, setOpenAlert] = useState(false);
@@ -79,7 +80,9 @@ const UpdateForm = () => {
 
 
   return (
-    <div className='container mt-5'>
+    <div>
+    <AHeader/>
+    <div className='container mt-5' style={{paddingTop: '100px', paddingBottom: '190px'}}>
       <Typography variant="h4" gutterBottom>
         Update Table Data
       </Typography>
@@ -346,7 +349,7 @@ const UpdateForm = () => {
             />
           </Grid>
         </Grid>
-        <Button type="submit" variant="contained" color="primary" style={{ marginTop: 20 }}>
+        <Button type="submit" variant="contained" color="success" style={{ marginTop: 20 }}>
           Update Data
         </Button>
       </form>
@@ -358,6 +361,7 @@ const UpdateForm = () => {
           Data updated successfully
         </MuiAlert>
       </Snackbar>
+    </div>
     </div>
   );
 };

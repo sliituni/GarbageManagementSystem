@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Table, TableContainer, TableHead, TableRow, TableCell, TableBody, Button, Paper, Modal, Box } from '@mui/material'; // Import Box
 import EditTableForm from './EditTableForm';
 import axios from 'axios';
+import AHeader from '../AHeader';
 
 // Define style variable for the Box component
 const style = {
@@ -46,14 +47,16 @@ const MonthlyDetailsTable = () => {
   };
 
   return (
-    <div className='container mt-5'>
+    <div>
+    <AHeader/>
+    <div className='container' style={{paddingTop: '150px'}}>
       <TableContainer component={Paper}>
         <Table aria-label="monthly details table">
           <TableHead>
             <TableRow>
               <TableCell><b>Month</b></TableCell>
-              <TableCell><b>Amount</b></TableCell>
-              <TableCell><b>Action</b></TableCell>
+              <TableCell ><b>Amount</b></TableCell>
+              <TableCell className='d-flex justify-content-end'><b>Action</b></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -61,7 +64,7 @@ const MonthlyDetailsTable = () => {
               <TableRow key={detail._id}>
                 <TableCell>{detail.month}</TableCell>
                 <TableCell>{detail.amount}</TableCell>
-                <TableCell>
+                <TableCell className='d-flex justify-content-end'>
                   <Button variant="contained" onClick={() => handleEdit(detail)} style={{ background: '#34A853', color: 'white' }}>Edit</Button>
                 </TableCell>
               </TableRow>
@@ -81,6 +84,7 @@ const MonthlyDetailsTable = () => {
           <EditTableForm monthlyDetail={editingDetail} onCancel={handleCancel} onSave={handleSave} />
         </Box>
       </Modal>
+    </div>
     </div>
   );
 };

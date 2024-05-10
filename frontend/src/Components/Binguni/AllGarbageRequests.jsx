@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import AHeader from "../AHeader";
 
 export default function AllGarbageRequests() {
     const [garbageRequests, setGarbageRequests] = useState([]);
@@ -20,8 +21,10 @@ export default function AllGarbageRequests() {
     }, []); // Empty dependency array to execute only once on component mount
 
     return (
-        <div className="container">
-            <br/><br/><br/><br/>
+        <div>
+        <AHeader/>
+        <div className="container" style={{paddingTop: '150px'}}>
+        <h2>garbage Request</h2><br/>
             <table className="table">
                 <thead className="table-success">
                     <tr>
@@ -50,6 +53,7 @@ export default function AllGarbageRequests() {
                     ))}
                 </tbody>
             </table>
+        </div>
         </div>
     );
 }

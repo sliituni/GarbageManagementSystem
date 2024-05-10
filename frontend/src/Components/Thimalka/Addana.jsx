@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import AHeader from '../AHeader';
 
 export default function Addana() {
     const [formData, setFormData] = useState({
@@ -38,7 +39,9 @@ export default function Addana() {
     };
 
     return (
-        <div className='container' style={{ marginTop: '200px' }}>
+        <div>
+        <AHeader/>
+        <div className='container' style={{ paddingTop: '300px',paddingBottom: '270px' }}>
             <div className='row'>
                 <div className='col-sm-6'>
                     <h2>Add Waste details</h2>
@@ -97,7 +100,7 @@ export default function Addana() {
                     <img src={webtag} alt='login' width="500" height="300" style={{ paddingLeft: "200px" }} />
                 </div>
             </div>
-            <br /><br /><br /><br /><br /><br /><br />
+        </div>
         </div>
     )
 }

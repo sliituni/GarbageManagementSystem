@@ -22,7 +22,7 @@ function Users() {
   return (
     <div className='container mt-5'>
       <AHeader/>
-      <div style={{paddingTop: '100px'}}>
+      <div style={{paddingTop: '100px', paddingBottom: '520px'}}>
         <h2>All User Details</h2>
     <TableContainer component={Paper}>
       <Table>

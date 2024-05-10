@@ -35,8 +35,8 @@ export default function ViewDetails() {
     };
 
     return (
-        <div className='container' style={{ paddingTop: '150px' }}>
-            <AHeader />
+        <div className='container' style={{ paddingTop: '150px', paddingBottom: '260px' }}>
+            <AHeader/>
             <h2>Waste Details</h2>
             <div style={{ textAlign: 'right', paddingBottom: '10px' }}>
                 <Button component={Link} to='/addanalitics' variant="outlined" color='success'>

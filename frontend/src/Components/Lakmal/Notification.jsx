@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, TextField, Button, Typography, Snackbar } from "@mui/material";
 import MuiAlert from '@mui/material/Alert'; // Import MuiAlert component
+import AHeader from "../AHeader";
 
 export default function Notification() {
   const [email, setEmail] = useState("");
@@ -47,7 +48,9 @@ export default function Notification() {
   };
 
   return (
-    <Container maxWidth="sm" style={{ marginTop: 50 }}>
+    <div>
+    <AHeader/>
+    <Container maxWidth="sm" style={{ paddingTop: '150px' }}>
       <Typography variant="h4" gutterBottom>
         Send Notifications
       </Typography>
@@ -61,6 +64,7 @@ export default function Notification() {
           onChange={(e) => setEmail(e.target.value)}
           margin="normal"
           variant="outlined"
+          color="success"
           required
         />
         <TextField
@@ -72,6 +76,7 @@ export default function Notification() {
           onChange={(e) => setSubject(e.target.value)}
           margin="normal"
           variant="outlined"
+          color="success"
           required
         />
         <TextField
@@ -84,6 +89,7 @@ export default function Notification() {
           onChange={(e) => setMessage(e.target.value)}
           margin="normal"
           variant="outlined"
+          color="success"
           required
         />
         <Button
@@ -107,5 +113,6 @@ export default function Notification() {
         </MuiAlert>
       </Snackbar>
     </Container>
+    </div>
   );
 }
