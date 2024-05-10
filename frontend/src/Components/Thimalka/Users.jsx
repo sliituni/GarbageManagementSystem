@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import axios from 'axios';
+import AHeader from '../AHeader';
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -20,6 +21,9 @@ function Users() {
 
   return (
     <div className='container mt-5'>
+      <AHeader/>
+      <div style={{paddingTop: '100px'}}>
+        <h2>All User Details</h2>
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
@@ -42,6 +46,7 @@ function Users() {
         </TableBody>
       </Table>
     </TableContainer>
+    </div>
     </div>
   );
 }

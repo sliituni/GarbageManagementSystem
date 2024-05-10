@@ -7,18 +7,21 @@ import logo from './img/greenbinlogo.png';
 export default function AHeader() {
     const signOut = () => {
         localStorage.removeItem('userId');
-        window.location.href = "/"; // Redirect to the sign-out route
+        window.location.href = "/admin";
       };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top" style={{ backgroundImage: "linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%)" }}>
       <div className="container container-fluid">
-        <Link to={'/landing'} className="navbar-brand">
+        <Link to={'#'} className="navbar-brand">
           <img src={logo} alt="Logo" width="100" height="100" />
         </Link>
         <center>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
+            <li className="nav-item">
+                <b><a className="nav-link active" aria-current="page" href="/admindash">Dashboard</a></b>
+              </li><span style={{ marginRight: "50px" }}></span>
               <li className="nav-item">
                 <b><a className="nav-link active" aria-current="page" href="/usermng">Manage User</a></b>
               </li><span style={{ marginRight: "50px" }}></span>
@@ -28,21 +31,11 @@ export default function AHeader() {
                 </b>
               </li><span style={{ marginRight: "50px" }}></span>
               <li className="nav-item">
-                <b><a className="nav-link active" aria-current="page" href="">Inquires</a></b>
+                <b><a className="nav-link active" aria-current="page" href="/AllContact">Inquires</a></b>
               </li><span style={{ marginRight: "50px" }}></span>
               <li className="nav-item">
-                <b>
-                  <Link to={'/cs/userp'} className="nav-link active" aria-current="page">
-                    Community Swap
-                  </Link>
-                </b>
+                <b><Link to={'/cs/userp'} className="nav-link active" aria-current="page">Community Swap</Link></b>
               </li><span style={{ marginRight: "50px" }}></span>
-              <li className="nav-item">
-                <b><a className="nav-link active" aria-current="page" href="#">About</a></b>
-              </li><span style={{ marginRight: "50px" }}></span>
-              <li className="nav-item">
-                <b><a className="nav-link active" aria-current="page" href="#">Contact</a></b>
-              </li>
             </ul>
           </div>
         </center>

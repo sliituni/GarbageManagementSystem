@@ -23,7 +23,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <Card sx={{ maxWidth: 400, margin: 'auto', marginTop: 30, padding: 2, marginBottom: 35}}>
+    <Card sx={{ maxWidth: 400, margin: 'auto', marginTop: 30, padding: 2, marginBottom: 32}}>
       <CardContent style={{borderRadius: '10px'}}>
         <img src={logo} alt="Logo" width="100" height="100" />
         <Typography variant="h5" component="h2">
